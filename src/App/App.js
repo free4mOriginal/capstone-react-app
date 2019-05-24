@@ -5,37 +5,11 @@ import Feed from '../Feed/Feed';
 import logo from '../assets/images/logo-white.png';
 import profile from '../assets/images/profile-photo.png';
 
-// import biruza from '../assets/images/handmade/biruza-big.png';
-// import dot from '../assets/images/handmade/dot-neckalce-small.png';
-// import garnet from '../assets/images/handmade/garnet-necklace-small.png';
-// import gosha from '../assets/images/zbrush/gosha.jpg';
-// import one from '../assets/images/traditional/fingerprint-ring.jpg';
-// import two from '../assets/images/traditional/1122.jpg';
-// import three from '../assets/images/traditional/1133.jpg';
-// import pearl from '../assets/images/handmade/pearl-upright.png';
-// import square from '../assets/images/handmade/square-tourmaline-small.png';
-
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      images: [
-        {
-          name: 'biruza',
-          src: 'https://picsum.photos/200/300/',
-          description: 'Biruza ring, sterling silver, tourquoise',
-        },
-        {
-          name: 'biruza',
-          src: 'https://picsum.photos/200/300/',
-          description: 'Biruza ring, sterling silver, tourquoise',
-        },
-        {
-          name: 'biruza',
-          src: 'https://picsum.photos/200/300/',
-          description: 'Biruza ring, sterling silver, tourquoise',
-        },
-      ],
+      images: [],
     }
   }
 
