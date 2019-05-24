@@ -1,18 +1,17 @@
 import React from 'react';
 import './App.css';
-import logo from './logo-white.png';
-import profile from './profile-photo.png';
+import logo from '../assets/images/logo-white.png';
+import profile from '../assets/images/profile-photo.png';
 
-import biruza from './biruza-big.png';
-import dot from './dot-neckalce-small.png';
-import garnet from './garnet-necklace-small.png';
-import gosha from './gosha.jpg';
-import one from './fingerprint-ring.jpg';
-import two from './1122.jpg';
-import three from './1133.jpg';
-import pearl from './pearl-upright.png';
-import square from './square-tourmaline-small.png';
-
+import biruza from '../assets/images/handmade/biruza-big.png';
+import dot from '../assets/images/handmade/dot-neckalce-small.png';
+import garnet from '../assets/images/handmade/garnet-necklace-small.png';
+import gosha from '../assets/images/zbrush/gosha.jpg';
+import one from '../assets/images/traditional/fingerprint-ring.jpg';
+import two from '../assets/images/traditional/1122.jpg';
+import three from '../assets/images/traditional/1133.jpg';
+import pearl from '../assets/images/handmade/pearl-upright.png';
+import square from '../assets/images/handmade/square-tourmaline-small.png';
 
 function App() {
   return (

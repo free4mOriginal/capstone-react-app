@@ -25,7 +25,7 @@ main {
 }
 
 #backgroundContainer {
-  background: url('back.jpg') no-repeat fixed;
+  background: url('../assets/images/back.jpg') no-repeat fixed;
 
   background-size: cover;
   background-position: center;
@@ -74,7 +74,7 @@ aside h2 {
   font-weight: 500;
   text-transform: uppercase;
   margin: 100px 0 10px 80px;
-  background-color: rgba(145, 0, 0, 0.2);
+  background-color: rgba(77, 0, 145, 0.2);
   z-index: 3;
 }
 
@@ -127,7 +127,7 @@ p, li {
 
 /* Mobile */
 
-@media screen and (max-width: 699px) {
+@media screen and (max-width: 640px) {
   #backgroundContainer {
       grid-template-columns: auto;
       grid-template-areas: 
