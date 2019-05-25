@@ -25,7 +25,7 @@ class Feed extends React.Component {
         ];
 
         for (let i = 0; i < 12; i++) {
-            const ran = Math.floor(Math.random()*12);
+            const ran = Math.floor(Math.random()*100);
 
             this.props.img.push({
                 name: names[ran],
