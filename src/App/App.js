@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 import Feed from '../Feed/Feed';
+import images from '../util/FeedStaticObj';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      images: [],
+      images: images,
     }
   }
 
@@ -15,7 +16,7 @@ class App extends Component {
       <div className="App" id="backgroundContainer">
 
         <header>
-          <img src={require('../assets/images/logo-white.png')}  width="250" alt="Karina Liner" />
+          <img src={require('../assets/images/logo-white.png')} width="250" alt="Karina Liner" />
         </header>
 
         <aside>
@@ -48,7 +49,7 @@ class App extends Component {
         </aside>
 
         <main>
-            <Feed img={this.state.images} />
+          <Feed img={this.state.images} />
         </main>
 
       </div>
