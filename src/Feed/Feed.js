@@ -25,13 +25,14 @@ class Feed extends React.Component {
         ];
 
         for (let i = 0; i < 12; i++) {
-            const ran = Math.floor(Math.random()*100);
+            const ran12 = Math.floor(Math.random()*12);
+            const ran100 = Math.floor(Math.random()*100);
 
             this.props.img.push({
-                name: names[ran],
-                src: `https://picsum.photos/200/?random${ran}`,
-                description: descriptions[ran],
-                id: names[i] + ran,
+                name: names[ran12],
+                src: `https://picsum.photos/200/?random${ran100}`,
+                description: descriptions[ran12],
+                id: names[i] + ran100,
             });
         };
     }
