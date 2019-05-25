@@ -51,9 +51,7 @@ class App extends Component {
         </aside>
 
         <main>
-            <Feed
-              img={this.state.images}
-            />
+            <Feed img={this.state.images} />
         </main>
 
       </div>

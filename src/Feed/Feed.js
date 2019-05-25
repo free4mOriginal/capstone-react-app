@@ -1,10 +1,6 @@
 import React from 'react';
 import Figure from '../Figure/Figure';
 
-
-// this .map() method calls on <Figure> Component every time
-// to render the individual image items in succession
-
 class Feed extends React.Component {
     constructor(props) {
         super(props);
@@ -35,17 +31,22 @@ class Feed extends React.Component {
                 name: names[ran],
                 src: `https://picsum.photos/200/?random${ran}`,
                 description: descriptions[ran],
+                id: names[i] + ran,
             });
         };
     }
 
     render() {
         this.createRandomImages();
+        console.log(this.props.img);
 
+        // this .map() method calls on <Figure> Component every time
+        // to render the individual image items in succession
         return (
             <div className="flex--container">
                 {this.props.img.map(imageItem => {
                     return <Figure
+                        key={imageItem.id}
                         alt={imageItem.name}
                         src={imageItem.src}
                         description={imageItem.description}
