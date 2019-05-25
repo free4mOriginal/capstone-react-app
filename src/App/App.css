@@ -36,12 +36,6 @@ main {
       "aside main"
 }
 
-.flex--container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-} 
-
 /*  ABOUT */
 
 aside {

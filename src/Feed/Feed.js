@@ -1,5 +1,6 @@
 import React from 'react';
 import Figure from '../Figure/Figure';
+import './Feed.css';
 
 class Feed extends React.Component {
 
