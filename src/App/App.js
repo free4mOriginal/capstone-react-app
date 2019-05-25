@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Feed from '../Feed/Feed';
 
-import logo from '../assets/images/logo-white.png';
-import profile from '../assets/images/profile-photo.png';
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -18,12 +15,12 @@ class App extends Component {
       <div className="App" id="backgroundContainer">
 
         <header>
-          <img src={logo} width="250" alt="Karina Liner" />
+          <img src={require('../assets/images/logo-white.png')}  width="250" alt="Karina Liner" />
         </header>
 
         <aside>
           <div id="aboutDiv">
-            <img src={profile} alt="profile" />
+            <img src={require('../assets/images/profile-photo.png')} alt="profile" />
             <h2>About Me</h2>
             <div id="aboutBox">
               <p>I received my formal training from the Erevan Art Academy, Armenia in Fine Art and Ceramics and worked and exhibited in the US, Europe and the Middle East. My work is a unique blend of organic design and sculptural jewelry, using both precious and semi-precious stones hand-picked for quality clarity and uniqueness.</p>

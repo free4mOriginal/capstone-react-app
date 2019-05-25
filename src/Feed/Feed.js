@@ -2,11 +2,6 @@ import React from 'react';
 import Figure from '../Figure/Figure';
 
 class Feed extends React.Component {
-    constructor(props) {
-        super(props);
-        this.createRandomImages = this.createRandomImages.bind(this);
-    }
-
     createRandomImages() {
         const names = ['Biruza', 'Meditation', 'Dot', 'Square', 'Antidote', 'Lorem', 'Ipsum', 'Omega', 'Alpha', 'Cricket', 'Chain', 'Link'];
         const descriptions = [
@@ -39,7 +34,6 @@ class Feed extends React.Component {
 
     render() {
         this.createRandomImages();
-        console.log(this.props.img);
 
         // this .map() method calls on <Figure> Component every time
         // to render the individual image items in succession
@@ -48,8 +42,8 @@ class Feed extends React.Component {
                 {this.props.img.map(imageItem => {
                     return <Figure
                         key={imageItem.id}
-                        alt={imageItem.name}
                         src={imageItem.src}
+                        alt={imageItem.name}
                         description={imageItem.description}
                     />
                 })}
