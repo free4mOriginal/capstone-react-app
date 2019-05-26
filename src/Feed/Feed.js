@@ -4,7 +4,8 @@ import './Feed.css';
 
 class Feed extends React.Component {
 
-    // Randomizer method for the main feed array:
+    // Randomizer method for the main feed array
+    // sorts the order of array by setting functions to positive or negative value;
     shuffle(array) {
         return array.sort(() => Math.random() - 0.5);
     }
