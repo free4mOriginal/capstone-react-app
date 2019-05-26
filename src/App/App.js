@@ -3,6 +3,8 @@ import './App.css';
 import Feed from '../Feed/Feed';
 import images from '../util/FeedStaticObj';
 
+let clickCounter = false;
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -12,29 +14,17 @@ class App extends Component {
   }
 
   filterFnx(category) {
-    if (category !== 'All') {
-      this.setState({images: this.state.images.filter(image => image.category === category)});
+    let filtered = this.state.images.filter(image => image.category === category);
+    if (category === 'All') {
+      clickCounter = false;
+      this.setState({ images: images });
     } else {
-      this.setState({images: images});
+      if (!clickCounter) {
+        clickCounter = true;
+        this.setState({ images: filtered });
+      }
     }
   }
-
-  // filter(category) {
-  //   const handmade = document.querySelectorAll('.Handmade');
-  //   const tranditional = document.querySelectorAll('.Traditional');
-  //   const zbrush = document.querySelectorAll('.ZBrush');
-  //   const all = document.querySelectorAll('figure');
-
-  //   if (category === 'Handmade') {
-  //     handmade.forEach((item) => item.setAttribute('style', 'display: none;'));
-  //   } else if (category === 'Traditional') {
-  //     tranditional.forEach((item) => item.setAttribute('style', 'display: none;'));
-  //   } else if (category === 'ZBrush') {
-  //     zbrush.forEach((item) => item.setAttribute('style', 'display: none;'));
-  //   } else if (category === 'All') {
-  //     all.forEach((item) => item.setAttribute('style', 'display: visible;'));
-  //   }
-  // }
 
   render() {
     return (
