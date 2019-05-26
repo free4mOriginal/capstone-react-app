@@ -44,7 +44,7 @@ const images = [
     {
         name: "three",
         src: `${require('../assets/images/traditional/1133.jpg')}`,
-        description: "Three-stone center, 14K gold engagement ring",
+        description: "Three-stone center, 14K gold Eng ring",
         category: "Traditional",
     },
 

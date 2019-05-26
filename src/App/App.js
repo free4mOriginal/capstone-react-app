@@ -11,6 +11,16 @@ class App extends Component {
     }
   }
 
+  filter(category) {
+    if (category === 'Handmade') {
+      console.log(category);
+    } else if (category === 'Traditional') {
+      console.log(category);
+    } else if (category === 'ZBrush') {
+      console.log(category);
+    }
+  }
+
   render() {
     return (
       <div className="App" id="backgroundContainer">
@@ -38,9 +48,9 @@ class App extends Component {
             </div>
 
             <div id="filter">
-              <button type="Handmade">Handmade Collection</button>
-              <button type="Traditional">Traditional Custom Jewelry</button>
-              <button type="ZBrush">ZBrush Modeling</button>
+              <button type="Handmade" onClick={() => this.filter('Handmade')}>Handmade Collection</button>
+              <button type="Traditional" onClick={() => this.filter('Traditional')}>Traditional Custom Jewelry</button>
+              <button type="ZBrush" onClick={() => this.filter('ZBrush')}>ZBrush Modeling</button>
             </div>
           </div>
         </aside>

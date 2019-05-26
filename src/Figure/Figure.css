@@ -3,11 +3,17 @@ figure {
     font-style: italic;
     font-size: 11pt;
     border: thin white solid;
-    background-color: rgba(255, 255, 255, 0.4) ;
-    padding: 5px;
-    margin: 10px;
+    background-color: rgba(255, 255, 255, 0.5) ;
+    padding: 1px 1px 5px 1px;
+    margin: 15px;
+    width: 250px;
+    box-shadow: 5px 5px 20px #000;
   }
   
   figure > img {
     width: 250px;
+  }
+
+  figcaption {
+      text-overflow: ellipsis;
   }
