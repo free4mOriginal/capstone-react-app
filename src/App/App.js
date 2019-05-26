@@ -11,15 +11,30 @@ class App extends Component {
     }
   }
 
-  filter(category) {
-    if (category === 'Handmade') {
-      console.log(category);
-    } else if (category === 'Traditional') {
-      console.log(category);
-    } else if (category === 'ZBrush') {
-      console.log(category);
+  filterFnx(category) {
+    if (category !== 'All') {
+      this.setState({images: this.state.images.filter(image => image.category === category)});
+    } else {
+      this.setState({images: images});
     }
   }
+
+  // filter(category) {
+  //   const handmade = document.querySelectorAll('.Handmade');
+  //   const tranditional = document.querySelectorAll('.Traditional');
+  //   const zbrush = document.querySelectorAll('.ZBrush');
+  //   const all = document.querySelectorAll('figure');
+
+  //   if (category === 'Handmade') {
+  //     handmade.forEach((item) => item.setAttribute('style', 'display: none;'));
+  //   } else if (category === 'Traditional') {
+  //     tranditional.forEach((item) => item.setAttribute('style', 'display: none;'));
+  //   } else if (category === 'ZBrush') {
+  //     zbrush.forEach((item) => item.setAttribute('style', 'display: none;'));
+  //   } else if (category === 'All') {
+  //     all.forEach((item) => item.setAttribute('style', 'display: visible;'));
+  //   }
+  // }
 
   render() {
     return (
@@ -48,17 +63,18 @@ class App extends Component {
             </div>
 
             <div id="filter">
-              <button type="Handmade" onClick={() => this.filter('Handmade')}>Handmade Collection</button>
-              <button type="Traditional" onClick={() => this.filter('Traditional')}>Traditional Custom Jewelry</button>
-              <button type="ZBrush" onClick={() => this.filter('ZBrush')}>ZBrush Modeling</button>
+              <button type="Handmade" onClick={() => this.filterFnx('Handmade')}>Handmade Collection</button>
+              <button type="Traditional" onClick={() => this.filterFnx('Traditional')}>Traditional Custom Jewelry</button>
+              <button type="ZBrush" onClick={() => this.filterFnx('ZBrush')}>ZBrush Modeling</button>
+              <button type="All" onClick={() => this.filterFnx('All')}>SHOW ALL</button>
             </div>
           </div>
         </aside>
 
         <main>
           <Feed img={this.state.images} />
+          <p id="copyright">&copy; 2019 Karina Liner | Zhana Liner, design/development</p>
         </main>
-
       </div>
     );
   }
