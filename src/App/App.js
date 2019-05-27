@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
 import Feed from '../Feed/Feed';
-import { Handmade, Traditional, ZBrush } from '../util/FeedStaticObj';
+import imagesALL from '../util/FeedStaticObj';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      images: [...Handmade, ...Traditional, ...ZBrush]
+      images: [...imagesALL.Handmade, ...imagesALL.Traditional, ...imagesALL.ZBrush]
     }
   }
 
-  filterFnx(toFilterArr) {
-    this.setState({ images: [...toFilterArr] })
+  filterFnx(toFilter) {
+    this.setState({ images: [...toFilter] })
   }
 
   render() {
@@ -42,11 +42,11 @@ class App extends Component {
             </div>
 
             <div id="filter">
-              <button type="Handmade" onClick={() => this.filterFnx(Handmade)}>Handmade Collection</button>
-              <button type="Traditional" onClick={() => this.filterFnx(Traditional)}>Traditional Custom Jewelry</button>
-              <button type="ZBrush" onClick={() => this.filterFnx(ZBrush)}>ZBrush Modeling</button>
+              <button type="Handmade" onClick={() => this.filterFnx(imagesALL.Handmade)}>Handmade Collection</button>
+              <button type="Traditional" onClick={() => this.filterFnx(imagesALL.Traditional)}>Traditional Custom Jewelry</button>
+              <button type="ZBrush" onClick={() => this.filterFnx(imagesALL.ZBrush)}>ZBrush Modeling</button>
               <button type="All" onClick={() => this.setState({
-                images: [...Handmade, ...Traditional, ...ZBrush]
+                images: [...imagesALL.Handmade, ...imagesALL.Traditional, ...imagesALL.ZBrush]
               })}>ALL</button>
             </div>
           </div>
