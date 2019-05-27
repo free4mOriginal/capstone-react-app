@@ -3,8 +3,6 @@ import './App.css';
 import Feed from '../Feed/Feed';
 import images from '../util/FeedStaticObj';
 
-let clickCounter = false;
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -14,16 +12,10 @@ class App extends Component {
   }
 
   filterFnx(category) {
-    let filtered = this.state.images.filter(image => image.category === category);
-    if (category === 'All') {
-      clickCounter = false;
-      this.setState({ images: images });
-    } else {
-      if (!clickCounter) {
-        clickCounter = true;
-        this.setState({ images: filtered });
-      }
-    }
+      this.state = {
+        images: images,
+      };
+      this.setState({ images: this.state.images.filter(image => image.category === category) });
   }
 
   render() {
@@ -56,14 +48,14 @@ class App extends Component {
               <button type="Handmade" onClick={() => this.filterFnx('Handmade')}>Handmade Collection</button>
               <button type="Traditional" onClick={() => this.filterFnx('Traditional')}>Traditional Custom Jewelry</button>
               <button type="ZBrush" onClick={() => this.filterFnx('ZBrush')}>ZBrush Modeling</button>
-              <button type="All" onClick={() => this.filterFnx('All')}>SHOW ALL</button>
+              <button type="All" onClick={() => { this.setState({ images: images })}}>Reset</button>
             </div>
           </div>
         </aside>
 
         <main>
           <Feed img={this.state.images} />
-          <p id="copyright">&copy; 2019 Karina Liner | Zhana Liner, design/development</p>
+          <p id="copyright">&copy; 2019 Karina Liner | Zhana Liner, Web Development</p>
         </main>
       </div>
     );
