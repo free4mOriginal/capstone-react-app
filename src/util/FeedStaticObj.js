@@ -1,4 +1,4 @@
-const images = [
+export const Handmade = [
     {
         name: "biruza",
         src: `${require('../assets/images/handmade/biruza-big.png')}`,
@@ -33,7 +33,9 @@ const images = [
         description: "Square tourmaline ring, sterling silver",
         category: "Handmade",
     },
+];
 
+export const Traditional = [
     {
         name: "leaf",
         src: `${require('../assets/images/traditional/1122.jpg')}`,
@@ -61,7 +63,9 @@ const images = [
         description: "Antique-style 14K gold engagement ring",
         category: "Traditional",
     },
+];
 
+export const ZBrush = [
     {
         name: "pet",
         src: `${require('../assets/images/zbrush/gosha.jpg')}`,
@@ -83,5 +87,3 @@ const images = [
         category: "ZBrush",
     },
 ];
-
-export default images;
