@@ -17,7 +17,6 @@ class App extends Component {
   // sent from the onClick method in the buttons;
   filterFnx(toFilter) {
     if (toFilter === 'All') {
-      document.querySelector('#All').setAttribute('class', 'none');
       this.setState({ images: initialState });
     } else {
       this.setState({ images: [...toFilter] });
