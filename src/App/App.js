@@ -16,7 +16,11 @@ class App extends Component {
   // Filtering method that sets the current state of images to only the selected category
   // sent from the onClick method in the buttons;
   filterFnx(toFilter) {
-    this.setState({ images: [...toFilter] })
+    if (toFilter === 'All') {
+      this.setState({ images: initialState });
+    } else {
+      this.setState({ images: [...toFilter] });
+    }
   }
 
   // Main render method that takes in rendered elements from Feed.js:
@@ -50,7 +54,7 @@ class App extends Component {
               <button type="Handmade" onClick={() => this.filterFnx(imagesALL.Handmade)}>Contemporary Collection</button>
               <button type="Traditional" onClick={() => this.filterFnx(imagesALL.Traditional)}> Custom Jewelry</button>
               <button type="ZBrush" onClick={() => this.filterFnx(imagesALL.ZBrush)}>ZBrush 3D Modeling</button>
-              <button type="All" onClick={() => this.setState({ images: initialState })}>ALL</button>
+              <button type="All" onClick={() => this.filterFnx('All')}>ALL</button>
             </div>
           </div>
         </aside>
