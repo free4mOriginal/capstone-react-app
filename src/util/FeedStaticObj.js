@@ -29,6 +29,30 @@ const imagesALL = {
             src: `${require('../assets/images/handmade/square-tourmaline-small.png')}`,
             description: "Square tourmaline ring, sterling silver",
         },
+
+        {
+            name: "bullet",
+            src: `${require('../assets/images/handmade/bullet-big.png')}`,
+            description: "Bullet garnet, sterling silver",
+        },
+
+        {
+            name: "bulletSquare",
+            src: `${require('../assets/images/handmade/bullet-square-small.png')}`,
+            description: "Bullet square ring, garnet, sterling silver",
+        },
+
+        {
+            name: "lavaHandmade",
+            src: `${require('../assets/images/handmade/lava-side.png')}`,
+            description: "Lava bead set in sterling silver",
+        },
+
+        {
+            name: "signature",
+            src: `${require('../assets/images/handmade/signature-ring-upright.png')}`,
+            description: "Signature ring, sterling silver",
+        },
     ],
     Traditional: [
         {
@@ -52,7 +76,19 @@ const imagesALL = {
         {
             name: "antique",
             src: `${require('../assets/images/traditional/antique.jpg')}`,
-            description: "Antique-style 14K gold engagement ring",
+            description: "Antique-style 14KY gold engagement ring",
+        },
+
+        {
+            name: "round",
+            src: `${require('../assets/images/traditional/1097.jpg')}`,
+            description: "Rounded 14KY gold engagement ring",
+        },
+
+        {
+            name: "rose",
+            src: `${require('../assets/images/traditional/1117.jpg')}`,
+            description: "Stylized Rose 14K gold engagement ring",
         },
     ],
     ZBrush: [
@@ -72,6 +108,24 @@ const imagesALL = {
             name: "lev",
             src: `${require('../assets/images/zbrush/lev.jpg')}`,
             description: "Signet ring with Lion Head, 3D model",
+        },
+
+        {
+            name: "byk",
+            src: `${require('../assets/images/zbrush/byk.jpg')}`,
+            description: "Taurus Zodiak ring, 3D model",
+        },
+
+        {
+            name: "lizardNecklace",
+            src: `${require('../assets/images/zbrush/lizard.jpg')}`,
+            description: "Lizard necklace with diamonds, 3D model",
+        },
+
+        {
+            name: "lizardRing",
+            src: `${require('../assets/images/zbrush/lizard-ring.jpg')}`,
+            description: "Lizard ring with diamond, 3D model",
         },
     ],
 }

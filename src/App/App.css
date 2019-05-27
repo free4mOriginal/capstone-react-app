@@ -112,10 +112,9 @@ button {
   opacity: 0.7;
 }
 
-button:hover {
+button:hover, button:visited  {
   background-color: rgba(19, 0, 145, 0.5);
   color: #fff;
-  /* opacity: 0.7; */
 }
 
 #copyright {

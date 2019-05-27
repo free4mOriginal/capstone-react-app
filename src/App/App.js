@@ -17,6 +17,7 @@ class App extends Component {
   // sent from the onClick method in the buttons;
   filterFnx(toFilter) {
     if (toFilter === 'All') {
+      document.querySelector('#All').setAttribute('class', 'none');
       this.setState({ images: initialState });
     } else {
       this.setState({ images: [...toFilter] });
@@ -51,10 +52,10 @@ class App extends Component {
             </div>
 
             <div id="filter">
-              <button type="Handmade" onClick={() => this.filterFnx(imagesALL.Handmade)}>Contemporary Collection</button>
-              <button type="Traditional" onClick={() => this.filterFnx(imagesALL.Traditional)}> Custom Jewelry</button>
-              <button type="ZBrush" onClick={() => this.filterFnx(imagesALL.ZBrush)}>ZBrush 3D Modeling</button>
-              <button type="All" onClick={() => this.filterFnx('All')}>ALL</button>
+              <button id="Handmade" onClick={() => this.filterFnx(imagesALL.Handmade)}>Contemporary Collection</button>
+              <button id="Traditional" onClick={() => this.filterFnx(imagesALL.Traditional)}> Custom Jewelry</button>
+              <button id="ZBrush" onClick={() => this.filterFnx(imagesALL.ZBrush)}>ZBrush 3D Modeling</button>
+              <button id="All" onClick={() => this.filterFnx('All')}>ALL</button>
             </div>
           </div>
         </aside>
