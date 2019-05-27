@@ -57,7 +57,7 @@ class App extends Component {
 
         <main>
           <Feed img={this.state.images} />
-          <p id="copyright">&copy; 2019 Karina Liner | Zhana Liner, Web Development</p>
+          <p id="copyright">&copy; 2019 Karina Liner | Zhana Liner, Web Development | Background by Brian Patrick Tagalog</p>
         </main>
       </div>
     );

@@ -23,6 +23,7 @@ main {
   grid-area: main;
   justify-content: center;
   text-align: center;
+  min-height: 85vh;
   z-index: 1;
 }
 
