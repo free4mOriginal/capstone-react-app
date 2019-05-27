@@ -3,18 +3,23 @@ import './App.css';
 import Feed from '../Feed/Feed';
 import imagesALL from '../util/FeedStaticObj';
 
+const initialState = [...imagesALL.Handmade, ...imagesALL.Traditional, ...imagesALL.ZBrush];
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      images: [...imagesALL.Handmade, ...imagesALL.Traditional, ...imagesALL.ZBrush]
+      images: initialState,
     }
   }
 
+  // Filtering method that sets the current state of images to only the selected category
+  // sent from the onClick method in the buttons;
   filterFnx(toFilter) {
     this.setState({ images: [...toFilter] })
   }
 
+  // Main render method that takes in rendered elements from Feed.js:
   render() {
     return (
       <div className="App" id="backgroundContainer">
@@ -42,12 +47,10 @@ class App extends Component {
             </div>
 
             <div id="filter">
-              <button type="Handmade" onClick={() => this.filterFnx(imagesALL.Handmade)}>Handmade Collection</button>
-              <button type="Traditional" onClick={() => this.filterFnx(imagesALL.Traditional)}>Traditional Custom Jewelry</button>
-              <button type="ZBrush" onClick={() => this.filterFnx(imagesALL.ZBrush)}>ZBrush Modeling</button>
-              <button type="All" onClick={() => this.setState({
-                images: [...imagesALL.Handmade, ...imagesALL.Traditional, ...imagesALL.ZBrush]
-              })}>ALL</button>
+              <button type="Handmade" onClick={() => this.filterFnx(imagesALL.Handmade)}>Contemporary Collection</button>
+              <button type="Traditional" onClick={() => this.filterFnx(imagesALL.Traditional)}> Custom Jewelry</button>
+              <button type="ZBrush" onClick={() => this.filterFnx(imagesALL.ZBrush)}>ZBrush 3D Modeling</button>
+              <button type="All" onClick={() => this.setState({ images: initialState })}>ALL</button>
             </div>
           </div>
         </aside>
