@@ -16,7 +16,7 @@ header {
   height: 160px;
   align-items: center;
   top: 20px;
-  z-index: 999;
+  z-index: 1;
 }
 
 main {
@@ -146,9 +146,15 @@ button {
   opacity: 0.7;
 }
 
-button:hover, button:visited  {
+button:hover {
   background-color: rgba(19, 0, 145, 0.5);
   color: #fff;
+}
+
+main>p>a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bolder;
 }
 
 #copyright {

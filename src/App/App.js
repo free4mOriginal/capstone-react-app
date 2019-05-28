@@ -28,7 +28,7 @@ class App extends Component {
     return (
       <div className="App" id="backgroundContainer">
 
-        <header>
+        <header id="top">
           <img src={require('../assets/images/logo-white.png')} width="250" alt="Karina Liner" />
         </header>
 
@@ -61,6 +61,7 @@ class App extends Component {
 
         <main>
           <Feed img={this.state.images} />
+          <p><a href="#top">Back</a></p>
           <p id="copyright">&copy; 2019 Karina Liner | Zhana Liner, Web Development | Background by Brian Patrick Tagalog</p>
         </main>
       </div>
