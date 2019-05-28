@@ -139,6 +139,24 @@ p, li {
   flex-direction: column;
 }
 
+.credits {
+  display: flex;
+  flex-direction: column;
+  margin: 40px;
+  color: lightgray;
+  font-weight: 200;
+  font-size: small;
+}
+
+.white {
+  color: white;
+  font-weight: 600;
+}
+
+.smaller {
+  font-size: x-small;
+}
+
 button {
   padding: 2px 10px 2px 10px;
   margin: 2px;
@@ -155,10 +173,6 @@ main>p>a {
   text-decoration: none;
   color: #fff;
   font-weight: bolder;
-}
-
-#copyright {
-  margin: 40px;
 }
 
 /* Social logos colors */

@@ -45,15 +45,15 @@ class App extends Component {
                 <li>5 1 0 . 3 3 3 . 5 4 4 0</li>
                 <li>KarinaLiner @ gmail</li>
                 <li id="social">
-                  <a href="https://www.linkedin.com/in/karina-liner-5530a03a/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin"></i></a> . <a href="https://www.instagram.com/karinaliner/" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a> . <a href="https://www.instagram.com/karinaliner/" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook"></i></a>
+                  <a href="https://www.linkedin.com/in/karina-liner-5530a03a/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin"></i></a> . <a href="https://www.instagram.com/karinaliner/" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a> . <a href="https://www.facebook.com/linerart/" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook"></i></a>
                 </li>
               </ul>
             </div>
 
             <div id="filter">
               <button id="Handmade" onClick={() => this.filterFnx(imagesALL.Handmade)}>Contemporary Collection</button>
-              <button id="Traditional" onClick={() => this.filterFnx(imagesALL.Traditional)}> Custom Jewelry</button>
-              <button id="ZBrush" onClick={() => this.filterFnx(imagesALL.ZBrush)}>3D Modeling</button>
+              <button id="Traditional" onClick={() => this.filterFnx(imagesALL.Traditional)}> Custom Jewelry Design</button>
+              <button id="ZBrush" onClick={() => this.filterFnx(imagesALL.ZBrush)}>3D Sculpted Jewelry</button>
               <button id="All" onClick={() => this.filterFnx('All')}>ALL</button>
             </div>
           </div>
@@ -61,8 +61,12 @@ class App extends Component {
 
         <main>
           <Feed img={this.state.images} />
-          <p><a href="#top">Back</a></p>
-          <p id="copyright">&copy; 2019 Karina Liner | Zhana Liner, Web Development | Background by Brian Patrick Tagalog</p>
+          <p><a href="#top">Back to top</a></p>
+          <div className="credits">
+            <span>&copy; 2019 <span className="white">Karina Liner</span> – Jewelry, Photography</span>
+            <span><span className="white">Zhana Liner</span> – Design & Web Development</span>
+            <span className="smaller">Brian Patrick Tagalog, wallpaper</span>
+          </div>
         </main>
       </div>
     );
