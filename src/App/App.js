@@ -53,7 +53,7 @@ class App extends Component {
             <div id="filter">
               <button id="Handmade" onClick={() => this.filterFnx(imagesALL.Handmade)}>Contemporary Collection</button>
               <button id="Traditional" onClick={() => this.filterFnx(imagesALL.Traditional)}> Custom Jewelry</button>
-              <button id="ZBrush" onClick={() => this.filterFnx(imagesALL.ZBrush)}>ZBrush 3D Modeling</button>
+              <button id="ZBrush" onClick={() => this.filterFnx(imagesALL.ZBrush)}>3D Modeling</button>
               <button id="All" onClick={() => this.filterFnx('All')}>ALL</button>
             </div>
           </div>

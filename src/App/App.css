@@ -26,21 +26,23 @@ main {
   min-height: 85vh;
   z-index: 1;
   -webkit-animation-name: gallery;
-  -webkit-animation-duration: 1.5s;
+  -webkit-animation-duration: 1.7s;
   animation-name: gallery;
-  animation-duration: 1.5s;
+  animation-duration: 1.7s;
   animation-timing-function: ease;
 }
 
 @-webkit-keyframes gallery {
-    0% {transform: translateY(10px)}
-    30% {transform: translateY(40px)}
-    100% {transform: translateY(0px)}
+  0% {transform: translateY(10px)}
+  20% {transform: translateY(10px)}
+  50% {transform: translateY(40px)}
+  100% {transform: translateY(0px)}
 }
 @keyframes gallery {
-    0% {transform: translateY(10px)}
-    30% {transform: translateY(40px)}
-    100% {transform: translateY(0px)}
+  0% {transform: translateY(10px)}
+  20% {transform: translateY(10px)}
+  50% {transform: translateY(40px)}
+  100% {transform: translateY(0px)}
 }
 
 #backgroundContainer {
@@ -67,6 +69,9 @@ aside {
   width: 20em;
   display: flex;
   justify-content: center;
+  -webkit-animation: fadein 2s;
+  -moz-animation: fadein 2s;
+  animation: fadein 2s;
 }
 
 aside img {
@@ -74,26 +79,19 @@ aside img {
   top: 60px;
   left: -20px;
   width: 130px;
-  -webkit-animation: fadein 2s;
-  -moz-animation: fadein 2s;
-  animation: fadein 2s;
 }
 
 @keyframes fadein {
-from { opacity: 0; }
-to   { opacity: 1; }
+  0% { opacity: 0; }
+  30% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 /* Firefox < 16 */
 @-moz-keyframes fadein {
-from { opacity: 0; }
-to   { opacity: 1; }
-}
-
-/* Safari, Chrome and Opera > 12.1 */
-@-webkit-keyframes fadein {
-from { opacity: 0; }
-to   { opacity: 1; }
+  0% { opacity: 0; }
+  30% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 #aboutDiv {
