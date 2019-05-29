@@ -21,15 +21,15 @@ Art portfolio website with content filtering and portfolio image/description pos
 
 ### Wireframes 
 
-- <a href="https://github.com/free4mOriginal/capstone/blob/master/docs/Wireframe.jpg" title="Initial wireframe">Initial wireframe</a>
+- <a href="https://github.com/free4mOriginal/capstone-react-app/blob/master/docs/Wireframe.jpg" title="Initial wireframe">Initial wireframe</a>
 
-- <a href="https://github.com/free4mOriginal/capstone/blob/master/docs/Initial-structures.jpg" title="User flow diagram">Initial structures wireframe</a>
+- <a href="https://github.com/free4mOriginal/capstone-react-app/blob/master/docs/Initial-structures.jpg" title="User flow diagram">Initial structures wireframe</a>
 
 - <a href="https://github.com/free4mOriginal/capstone/blob/master/docs/APIs-.jpg" title="User flow diagram">API research</a>
 
 ### User Flow diagram and Kanban board for the project
 
-- <a href="https://github.com/free4mOriginal/capstone/blob/master/docs/Capstone-diagram.pdf" title="User flow diagram">User flow diagram</a>
+- <a href="https://github.com/free4mOriginal/capstone-react-app/blob/master/docs/Capstone-diagram.pdf" title="User flow diagram">User flow diagram</a>
 
 - <a href="https://trello.com/b/hnqw7xVf/capstone-jewelry-portfolio" title="User flow diagram" target="_black">Trello (Kanban)</a>
 
