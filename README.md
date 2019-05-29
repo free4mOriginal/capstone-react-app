@@ -1,3 +1,40 @@
+# Capstone
+Capstone project | Jewelry Designer Portfolio
+
+
+## Jewelry designer portfolio website
+_(Single-page Web App)_
+
+Art portfolio website with content filtering and portfolio image/description posting options.
+
+**Client / jewelry designer** will have the ability to post new item images with description [Instagram-style] directly from the browser.
+
+**Users / prospective jewelry customers** will be offered a main content feed consisting of posted old and new jewelry designs, which users can then filter by desired pre-defined category.
+
+### Content outline
+
+- **About Me** information about the designer [static]
+- Designer contact information [static]
+- Main content feed consisting of designer posted items [dynamic]
+- _optional_ **Contact Me** form [static]
+- _future implementation_ Broswer image upload functionality.
+
+### Wireframes 
+
+- <a href="https://github.com/free4mOriginal/capstone/blob/master/docs/Wireframe.jpg" title="Initial wireframe">Initial wireframe</a>
+
+- <a href="https://github.com/free4mOriginal/capstone/blob/master/docs/Initial-structures.jpg" title="User flow diagram">Initial structures wireframe</a>
+
+- <a href="https://github.com/free4mOriginal/capstone/blob/master/docs/APIs-.jpg" title="User flow diagram">API research</a>
+
+### User Flow diagram and Kanban board for the project
+
+- <a href="https://github.com/free4mOriginal/capstone/blob/master/docs/Capstone-diagram.pdf" title="User flow diagram">User flow diagram</a>
+
+- <a href="https://trello.com/b/hnqw7xVf/capstone-jewelry-portfolio" title="User flow diagram" target="_black">Trello (Kanban)</a>
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
