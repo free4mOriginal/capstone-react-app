@@ -25,7 +25,7 @@ Art portfolio website with content filtering and portfolio image/description pos
 
 - <a href="https://github.com/free4mOriginal/capstone-react-app/blob/master/docs/Initial-structures.jpg" title="User flow diagram">Initial structures wireframe</a>
 
-- <a href="https://github.com/free4mOriginal/capstone/blob/master/docs/APIs-.jpg" title="User flow diagram">API research</a>
+- <a href="https://github.com/free4mOriginal/capstone-react-app/blob/master/docs/APIs-.jpg" title="User flow diagram">API research</a>
 
 ### User Flow diagram and Kanban board for the project
 
