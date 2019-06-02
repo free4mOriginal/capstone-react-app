@@ -46,7 +46,7 @@ main {
 }
 
 #backgroundContainer {
-  background: url('../assets/images/back.jpg') no-repeat fixed;
+  background: url('../images/back.jpg') no-repeat fixed;
 
   background-size: cover;
   background-position: center;
