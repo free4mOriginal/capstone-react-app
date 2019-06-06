@@ -1,39 +1,34 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
-import { image } from 'cloudinary-react';
+export default class Upload extends React.Component {
+    processFile = async e => {
+        let file = e.target.files[0];
+        let formData = new FormData();
 
-import "./styles.css";
+        formData.append('file', file);
+        formData.append('cloud_name', 'free4m');
+        formData.append("upload_preset", "karina");
 
-class Upload extends React.Component {
-  processFile = async e => {
-    var file = e.target.files[0];
-    var formdata = new FormData();
+        let res = await fetch(
+            "https://api.cloudinary.com/v1_1/free4m/auto/upload",
+            {
+                method: "post",
+                mode: "cors",
+                body: formData
+            }
+        );
 
-    formdata.append("file", file);
-    formdata.append("cloud_name", "shirly");
-    formdata.append("upload_preset", "my-preset");
+        let json = await res.json();
+        console.log(JSON.stringify(json.secure_url));
+    };
 
-    let res = await fetch(
-      "https://api.cloudinary.com/v1_1/shirly/auto/upload",
-      {
-        method: "post",
-        mode: "cors",
-        body: formdata
-      }
-    );
-
-    let json = await res.json();
-    console.log(JSON.stringify(json.secure_url));
-  };
-
-  render() {
-    return (
-      <div>
-        <h3>Upload</h3>
-        <input type="file" onChange={this.processFile} />
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div id="upload">
+                <p>Upload</p>
+                <input type="file" onChange={this.processFile} />
+            </div>
+        );
+    }
 }
-ReactDOM.render(<Upload />, document.getElementById("container"));
+

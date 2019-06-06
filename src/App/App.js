@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Feed from '../Feed/Feed';
 import imagesALL from '../util/FeedStaticObj';
+import Upload from '../util/Cloudinary';
 
 const initialState = [...imagesALL.Handmade, ...imagesALL.Traditional, ...imagesALL.ZBrush];
 
@@ -34,6 +35,7 @@ class App extends Component {
 
         <aside>
           <div id="aboutDiv">
+            <Upload />
             <img src={require('../images/profile-photo.png')} alt="profile" />
             <h2>About Me</h2>
             <div id="aboutBox">
@@ -60,6 +62,7 @@ class App extends Component {
         </aside>
 
         <main>
+          {/* <img src="https://res.cloudinary.com/free4m/image/upload/v1559764531/Jewelry/Handmade/biruza-big_ljgv9v.png" alt="test" /> */}
           <Feed img={this.state.images} />
           <p><a href="#top">Back to top</a></p>
           <div className="credits">

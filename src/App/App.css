@@ -59,6 +59,15 @@ main {
   min-height: 100vh;
 }
 
+/* Header form */
+
+#upload {
+  position: fixed;
+  left: 120px;
+  top: 40px;
+  color: black; 
+}
+
 /*  SIDE */
 
 aside {
