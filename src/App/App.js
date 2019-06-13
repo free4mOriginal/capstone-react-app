@@ -3,8 +3,23 @@ import './App.css';
 import Feed from '../Feed/Feed';
 import imagesALL from '../util/FeedStaticObj';
 import Upload from '../util/Cloudinary';
+import axios from 'axios';
+
+import cloudinary from 'cloudinary-core';
+const cloudinaryCore = new cloudinary.Cloudinary({ cloud_name: 'free4m' });
+let id = 'biruza-big_ljgv9v';
+const SampleImg = () => (
+  <img src={cloudinaryCore.url(`${id}`)} alt="test" />
+);
 
 const initialState = [...imagesALL.Handmade, ...imagesALL.Traditional, ...imagesALL.ZBrush];
+
+let resGET = fetch('https://res.cloudinary.com/free4m/image/list/handmade.json');
+console.log(resGET);
+
+// axios.get('http://res.cloudinary.com/free4m/image/list/handmade.json')
+//   .then((response) => console.log(response))
+//   .catch((error) => console.error(`Error! ${error}`));
 
 class App extends Component {
   constructor(props) {
@@ -63,6 +78,7 @@ class App extends Component {
 
         <main>
           {/* <img src="https://res.cloudinary.com/free4m/image/upload/v1559764531/Jewelry/Handmade/biruza-big_ljgv9v.png" alt="test" /> */}
+          <SampleImg />
           <Feed img={this.state.images} />
           <p><a href="#top">Back to top</a></p>
           <div className="credits">

@@ -1,0 +1,19 @@
+{
+    "resources": [
+        {
+            "public_id": "biruza-big_ljgv9v",
+            "version": 1559764531,
+            "format": "png",
+            "width": 445,
+            "height": 445,
+            "type": "upload",
+            "created_at": "2019-06-05T19:55:31Z",
+            "context": {
+                "custom": {
+                    "caption": "Square turquoise ring, sterling silver"
+                }
+            }
+        },
+    ],
+    "updated_at": "2019-06-13T00:40:10Z"
+}
