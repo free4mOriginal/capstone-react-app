@@ -14,8 +14,7 @@ const SampleImg = () => (
 
 const initialState = [...imagesALL.Handmade, ...imagesALL.Traditional, ...imagesALL.ZBrush];
 
-let resGET = fetch('https://res.cloudinary.com/free4m/image/list/handmade.json');
-console.log(resGET);
+const test = fetch('https://res.cloudinary.com/free4m/image/list/handmade.json').then(resp => resp.json().then(json => console.log(json)))
 
 // axios.get('http://res.cloudinary.com/free4m/image/list/handmade.json')
 //   .then((response) => console.log(response))
