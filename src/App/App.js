@@ -3,7 +3,7 @@ import './App.css';
 import Feed from '../Feed/Feed';
 import imagesALL from '../util/FeedStaticObj';
 import Upload from '../util/Cloudinary';
-import axios from 'axios';
+// import axios from 'axios';
 
 import cloudinary from 'cloudinary-core';
 const cloudinaryCore = new cloudinary.Cloudinary({ cloud_name: 'free4m' });
@@ -14,11 +14,44 @@ const SampleImg = () => (
 
 const initialState = [...imagesALL.Handmade, ...imagesALL.Traditional, ...imagesALL.ZBrush];
 
-const test = fetch('https://res.cloudinary.com/free4m/image/list/handmade.json').then(resp => resp.json().then(json => console.log(json)))
+let handmadeState = [];
+let traditionalState = [];
+let zbrushState = []; 
 
-// axios.get('http://res.cloudinary.com/free4m/image/list/handmade.json')
-//   .then((response) => console.log(response))
+function handmadeFetch() {
+  return fetch('https://res.cloudinary.com/free4m/image/list/handmade.json').then(resp => resp.json().then(json => {
+    for (let i=0; i<json.resources.length; i++) {
+      handmadeState.push(json.resources[i]);
+    }
+  }));
+};
+
+function traditionalFetch() {
+  return fetch('https://res.cloudinary.com/free4m/image/list/traditional.json').then(resp => resp.json().then(json => {
+    for (let i=0; i<json.resources.length; i++) {
+      traditionalState.push(json.resources[i]);
+    }
+  }));
+};
+
+function zbrushFetch() {
+  return fetch('https://res.cloudinary.com/free4m/image/list/zbrush.json').then(resp => resp.json().then(json => {
+    for (let i=0; i<json.resources.length; i++) {
+      zbrushState.push(json.resources[i]);
+    }
+  }));
+};
+
+handmadeFetch();
+traditionalFetch();
+zbrushFetch();
+console.log(handmadeState, traditionalState, zbrushState);
+
+// const handmadeState = axios.get('https://res.cloudinary.com/free4m/image/list/handmade.json')
+//   .then(response => response.json().then(json => json))
 //   .catch((error) => console.error(`Error! ${error}`));
+
+// console.log(handmadeState);
 
 class App extends Component {
   constructor(props) {
