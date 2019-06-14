@@ -1,7 +1,9 @@
 import React from "react";
+import cloudinary from 'cloudinary-core';
+
 // import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios } from 'react-axios';
 
-export default class Upload extends React.Component {
+export class Upload extends React.Component {
     processFile = async e => {
         let file = e.target.files[0];
         let myForm = document.querySelector('#mainForm');
@@ -45,6 +47,33 @@ export default class Upload extends React.Component {
                 </form>
             </div>
         );
+    }
+};
+
+export const Cloudinary = {
+    imageLoading(stateName) {
+        return fetch(`https://res.cloudinary.com/free4m/image/list/${stateName}.json`).then(resp => resp.json().then(jsonResp => {
+            if (jsonResp.resources) {
+                return jsonResp.resources.map(item => ({
+                    tag: `${stateName}`,
+                    public_id: item.public_id,
+                    description: item.context.custom.caption,
+                    version: item.version,
+                }));
+            } else {
+                return [];
+            }
+        }));
+    }
+};
+
+const cloudinaryCore = new cloudinary.Cloudinary({ cloud_name: 'free4m' });
+
+export class SampleImg extends React.Component {
+    render() {
+        return (
+        <img src={cloudinaryCore.url('biruza-big_ljgv9v')} alt="test" width="100px" />
+        )
     }
 }
 

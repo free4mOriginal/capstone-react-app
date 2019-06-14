@@ -10,17 +10,20 @@ class Feed extends React.Component {
     }
 
     render() {
-        this.shuffle(this.props.img);
+        this.shuffle(this.props.currentState);
+        const srcURL = 'https://res.cloudinary.com/free4m/image/upload/v';
 
         // map() method renders the shuffled array in succession with the <Figure /> template;
         return (
             <div className="flex--container">
-                {this.props.img.map(imageItem => {
+                {console.log('Feed current state', this.props.currentState)}
+                {/* <img src={this.props.currentState[0].public_id} alt="test" /> */}
+                {this.props.currentState.map(item => {
                     return <Figure
-                        key={imageItem.name}
-                        src={imageItem.src}
-                        alt={imageItem.name}
-                        description={imageItem.description}
+                        key={item.public_id}
+                        src={`${srcURL}/${item.version}/${item.public_id}`}
+                        alt={item.public_id}
+                        description={item.description}
                     />
                 })}
             </div>

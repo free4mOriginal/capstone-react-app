@@ -1,73 +1,87 @@
 import React, { Component } from 'react';
 import './App.css';
 import Feed from '../Feed/Feed';
-import imagesALL from '../util/FeedStaticObj';
-import Upload from '../util/Cloudinary';
-// import axios from 'axios';
+// import imagesALL from '../util/FeedStaticObj';
+import { Upload, Cloudinary, SampleImg } from '../util/Cloudinary';
 
-import cloudinary from 'cloudinary-core';
-const cloudinaryCore = new cloudinary.Cloudinary({ cloud_name: 'free4m' });
-let id = 'biruza-big_ljgv9v';
-const SampleImg = () => (
-  <img src={cloudinaryCore.url(`${id}`)} alt="test" />
-);
+// let handmade = [];
+// let traditional = [];
+// let zbrush = [];
+// let all = [handmade.concat(traditional).concat(zbrush)];
 
-const initialState = [...imagesALL.Handmade, ...imagesALL.Traditional, ...imagesALL.ZBrush];
+// async function populateState(stateArray, stateName) {
+//   return await fetch(`https://res.cloudinary.com/free4m/image/list/${stateName}.json`).then(resp => resp.json().then(json => {
+//     for (let i = 0; i < json.resources.length; i++) {
+//       return stateArray.push(json.resources[i]);
+//     }
+//   })
+//     .then(this.setState({searchResults: searchResults});));
+// }
 
-let handmadeState = [];
-let traditionalState = [];
-let zbrushState = []; 
+// populateState(handmade, 'handmade');
+// populateState(traditional, 'traditional');
+// populateState(zbrush, 'zbrush');
 
-function handmadeFetch() {
-  return fetch('https://res.cloudinary.com/free4m/image/list/handmade.json').then(resp => resp.json().then(json => {
-    for (let i=0; i<json.resources.length; i++) {
-      handmadeState.push(json.resources[i]);
-    }
-  }));
-};
-
-function traditionalFetch() {
-  return fetch('https://res.cloudinary.com/free4m/image/list/traditional.json').then(resp => resp.json().then(json => {
-    for (let i=0; i<json.resources.length; i++) {
-      traditionalState.push(json.resources[i]);
-    }
-  }));
-};
-
-function zbrushFetch() {
-  return fetch('https://res.cloudinary.com/free4m/image/list/zbrush.json').then(resp => resp.json().then(json => {
-    for (let i=0; i<json.resources.length; i++) {
-      zbrushState.push(json.resources[i]);
-    }
-  }));
-};
-
-handmadeFetch();
-traditionalFetch();
-zbrushFetch();
-console.log(handmadeState, traditionalState, zbrushState);
+// const initialState = [...handmadeState, ...traditionalState, ...zbrushState];
 
 // const handmadeState = axios.get('https://res.cloudinary.com/free4m/image/list/handmade.json')
 //   .then(response => response.json().then(json => json))
 //   .catch((error) => console.error(`Error! ${error}`));
 
-// console.log(handmadeState);
+// savePlaylist() {
+//   let trackURIs = [];
+//   for (let i=0; i<this.state.playlistTracks.length; i++) {
+//     trackURIs.push(this.state.playlistTracks[i].uri);
+//   }
+//   Spotify.savePlaylist(this.state.playlistName, trackURIs);
+//   this.setState({playlistName: 'New Playlist'});
+// }
+
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      images: initialState,
-    }
+      assets: []
+    };
+    this.populateState = this.populateState.bind(this);
+    this.filterFnx = this.filterFnx.bind(this);
   }
+
+  // async populateStates(stateName) {
+  //   return await fetch(`https://res.cloudinary.com/free4m/image/list/${stateName}.json`).then(resp => resp.json().then(json => {
+  //     for (let i = 0; i < json.resources.length; i++) {
+  //       console.log(this.state.assets)
+  //       this.setState({ stateName: this.state.assets[stateName].push(json.resources[i]) });
+  //     }
+  //   }));
+  // }
+
+  populateState() {
+    let tags = ['handmade', 'traditional', 'zbrush'];
+    let fullAssetsArray = [];
+
+    for (let i=0; i<tags.length; i++) {
+      Cloudinary.imageLoading(tags[i]).then( returnedArray=> {
+        fullAssetsArray.push(...returnedArray);
+        // console.log(returnedArray);
+      });
+    }
+    this.setState({ assets: fullAssetsArray });
+  }
+
+  componentDidMount(){
+    this.populateState();
+  }
+
 
   // Filtering method that sets the current state of images to only the selected category
   // sent from the onClick method in the buttons;
   filterFnx(toFilter) {
     if (toFilter === 'All') {
-      this.setState({ images: initialState });
+      this.setState({ initialState: [...this.state.assets.initialState] });
     } else {
-      this.setState({ images: [...toFilter] });
+      this.setState({ assets: [...toFilter] });
     }
   }
 
@@ -100,18 +114,17 @@ class App extends Component {
             </div>
 
             <div id="filter">
-              <button id="Handmade" onClick={() => this.filterFnx(imagesALL.Handmade)}>Contemporary Collection</button>
-              <button id="Traditional" onClick={() => this.filterFnx(imagesALL.Traditional)}> Custom Jewelry Design</button>
-              <button id="ZBrush" onClick={() => this.filterFnx(imagesALL.ZBrush)}>3D Sculpted Jewelry</button>
+              <button id="Handmade" onClick={() => this.filterFnx(this.state.handmade)}>Contemporary Collection</button>
+              <button id="Traditional" onClick={() => this.filterFnx(this.state.traditional)}> Custom Jewelry Design</button>
+              <button id="ZBrush" onClick={() => this.filterFnx(this.state.zbrush)}>3D Sculpted Jewelry</button>
               <button id="All" onClick={() => this.filterFnx('All')}>ALL</button>
             </div>
           </div>
         </aside>
 
         <main>
-          {/* <img src="https://res.cloudinary.com/free4m/image/upload/v1559764531/Jewelry/Handmade/biruza-big_ljgv9v.png" alt="test" /> */}
-          <SampleImg />
-          <Feed img={this.state.images} />
+          {/* <a onClick={this.populateState}><SampleImg /></a> */}
+          <Feed currentState={this.state.assets} />
           <p><a href="#top">Back to top</a></p>
           <div className="credits">
             <span>&copy; 2019 <span className="white">Karina Liner</span> – Jewelry, Photography</span>
@@ -125,3 +138,8 @@ class App extends Component {
 };
 
 export default App;
+
+// let MyComponent = Loadable({
+//   loader: () => import('./MyComponent'),
+//   loading: () => <div>Loading...</div>
+// });
