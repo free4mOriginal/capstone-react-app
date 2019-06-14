@@ -37,7 +37,6 @@ import { Upload, Cloudinary, SampleImg } from '../util/Cloudinary';
 //   this.setState({playlistName: 'New Playlist'});
 // }
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -57,23 +56,24 @@ class App extends Component {
   //   }));
   // }
 
-  populateState() {
-    let tags = ['handmade', 'traditional', 'zbrush'];
-    let fullAssetsArray = [];
+  // populateState() {
+  //   let tags = ['handmade', 'traditional', 'zbrush'];
+  //   let fullAssetsArray = [];
 
-    for (let i=0; i<tags.length; i++) {
-      Cloudinary.imageLoading(tags[i]).then( returnedArray=> {
-        fullAssetsArray.push(...returnedArray);
-        // console.log(returnedArray);
-      });
-    }
-    this.setState({ assets: fullAssetsArray });
+  //   for (let i=0; i<tags.length; i++) {
+  //     Cloudinary.imageLoading(tags[i]).then(returnedArray => fullAssetsArray.push(...returnedArray));
+  //   }
+  // }
+
+  populateState() {
+    Cloudinary.imageLoading('handmade').then(returnedArray => {
+      this.setState({ assets: returnedArray });
+    });
   }
 
   componentDidMount(){
     this.populateState();
   }
-
 
   // Filtering method that sets the current state of images to only the selected category
   // sent from the onClick method in the buttons;
@@ -124,7 +124,7 @@ class App extends Component {
 
         <main>
           {/* <a onClick={this.populateState}><SampleImg /></a> */}
-          <Feed currentState={this.state.assets} />
+          <Feed currentState={this.state.assets.sort(() => Math.random() - 0.5)} />
           <p><a href="#top">Back to top</a></p>
           <div className="credits">
             <span>&copy; 2019 <span className="white">Karina Liner</span> – Jewelry, Photography</span>

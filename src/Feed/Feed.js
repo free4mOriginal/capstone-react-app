@@ -5,18 +5,18 @@ import './Feed.css';
 class Feed extends React.Component {
 
     // Randomizer method for the main feed array, sorts the order of array:
-    shuffle(array) {
-        return array.sort(() => Math.random() - 0.5);
-    }
+    // shuffle(array) {
+    //     return array.sort(() => Math.random() - 0.5);
+    // }
 
     render() {
-        this.shuffle(this.props.currentState);
+        // this.shuffle(this.props.currentState);
         const srcURL = 'https://res.cloudinary.com/free4m/image/upload/v';
 
         // map() method renders the shuffled array in succession with the <Figure /> template;
         return (
             <div className="flex--container">
-                {console.log('Feed current state', this.props.currentState)}
+                {console.log('Inside the Feed', this.props.currentState)}
                 {/* <img src={this.props.currentState[0].public_id} alt="test" /> */}
                 {this.props.currentState.map(item => {
                     return <Figure
