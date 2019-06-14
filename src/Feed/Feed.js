@@ -9,19 +9,21 @@ class Feed extends React.Component {
     //     return array.sort(() => Math.random() - 0.5);
     // }
 
+    // https://res.cloudinary.com/free4m/image/upload/v/1559764530/lava-side_etsn5j
+    // https://res.cloudinary.com/free4m/image/upload/v1559764530/lava-side_etsn5j.png
+    // https://res.cloudinary.com/free4m/image/upload/v/1559764530/lava-side_etsn5j.png  
+    
     render() {
         // this.shuffle(this.props.currentState);
         const srcURL = 'https://res.cloudinary.com/free4m/image/upload/v';
 
-        // map() method renders the shuffled array in succession with the <Figure /> template;
         return (
             <div className="flex--container">
-                {console.log('Inside the Feed', this.props.currentState)}
-                {/* <img src={this.props.currentState[0].public_id} alt="test" /> */}
                 {this.props.currentState.map(item => {
+                    console.log(item);
                     return <Figure
                         key={item.public_id}
-                        src={`${srcURL}/${item.version}/${item.public_id}`}
+                        src={`${srcURL}${item.version}/${item.public_id}.png`}
                         alt={item.public_id}
                         description={item.description}
                     />
