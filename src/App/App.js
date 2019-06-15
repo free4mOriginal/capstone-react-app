@@ -19,9 +19,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      handmade: [],
-      traditional: [],
-      zbrush: [],
+      assets: [],
     };
     this.populateState = this.populateState.bind(this);
     this.filterFnx = this.filterFnx.bind(this);
@@ -46,13 +44,9 @@ class App extends Component {
   // }
 
   populateState() {
-    let tags = ['handmade', 'traditional', 'zbrush'];
-
-    for (let i = 0; i < tags.length; i++) {
-      Cloudinary.imageLoading(tags[i]).then(returnedArray => {
-        this.setState({ [tags[i]]: returnedArray });
-      });
-    }
+    Cloudinary.imageLoading('all').then(returnedArray => {
+      this.setState({ assets: returnedArray });
+    });
   }
 
   componentDidMount() {
@@ -107,7 +101,7 @@ class App extends Component {
         </aside>
 
         <main>
-          <Feed currentState={this.state.handmade.concat(this.state.traditional, this.state.zbrush).sort(() => Math.random() - 0.5)} />
+          <Feed currentState={this.state.assets.sort(() => Math.random() - 0.5)} />
           <p><a href="#top">Back to top</a></p>
           <div className="credits">
             <span>&copy; 2019 <span className="white">Karina Liner</span> – Jewelry, Photography</span>
