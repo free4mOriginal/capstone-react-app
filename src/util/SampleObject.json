@@ -17,3 +17,37 @@
     ],
     "updated_at": "2019-06-13T00:40:10Z"
 }
+
+App.js: 49 (21) []
+0: {tag: "all", public_id: "gosha_zlqqik", description: "Pet jewelry ring, 3D sculpt", version: 1559764501
+}1: {tag: "all", public_id: "dot-neckalce-small_ewqmmj", description: "Dot necklace, sterling silver", version: 1559764530
+}2: {tag: "all", public_id: "lizard-ring_mzbwzx", description: "Lizard-themed ring, 3D sculpt", version: 1559764501
+}3: {tag: "all", public_id: "bullet-big_m0tj1e", description: "Red garnet bullet ring, sterling silver", version: 1559764530
+}4: {tag: "all", public_id: "1097_ekbk8z", description: "14K Gold piped engagement ring", version: 1559764516
+}5: {tag: "all", public_id: "pearl-upright_moq8tz", description: "14K Gold-plated ring with Mother of Pearl", version: 1559764530
+}6: {tag: "all", public_id: "lava_onokiy", description: "Sculpted lava bead ring, 3D sculpt", version: 1559764501
+}7: {tag: "all", public_id: "biruza-big_ljgv9v", description: "Square turquoise ring, sterling silver", version: 1559764531
+}8: {tag: "all", public_id: "signature-ring-upright_cvaqet", description: "Signature ring, sterling silver", version: 1559764530
+}9: {tag: "all", public_id: "lava-side_etsn5j", description: "Sculpted ring with lava bead, sterling silver", version: 1559764530
+}10: {tag: "all", public_id: "square-tourmaline-small_iqtb2t", description: "Green tourmaline square ring, sterling silver", version: 1559764530
+}11: {tag: "all", public_id: "lev_hgwse0", description: "Lionhead signet ring, 3D sculpt", version: 1559764501
+}12: {tag: "all", public_id: "fingerprint-ring_xbeq3d", description: "Thumbprint keepsake ring, 3D model", version: 1559764516
+}13: {tag: "all", public_id: "garnet-necklace-small_ghvjsj", description: "Garnet necklace, sterling silver", version: 1559764530
+}14: {tag: "all", public_id: "lizard_kvcled", description: "Lizard-themed pendent, 3D scuplt", version: 1559764501
+}15: {tag: "all", public_id: "byk_kzstul", description: "Taurus zodiac ring, 3D sculpt", version: 1559764501
+}16: {tag: "all", public_id: "bullet-square-small_wdvg6l", description: "Bullet garnet ring, sterling silver", version: 1559764530
+}17: {tag: "all", public_id: "1122_swu9q9", description: "Leaf engagement ring and band, 3D model", version: 1559764516
+}18: {tag: "all", public_id: "1133_d9irnr", description: "3-stone engagement ring, 3D model", version: 1559764516
+}19: {tag: "all", public_id: "antique_vaxaoq", description: "Antique style engagement ring, 3D model", version: 1559764516
+}20: {tag: "all", public_id: "1117_w3w8dp", description: "Rose in the garden engagement ring, 3D model", version: 1559764516
+}length: 21__proto__: Array(0)
+webpackHotDevClient.js: 120 ./src/App/App.js
+  Line 5:  'SampleImg' is defined but never used  no-unused-vars
+printWarnings @ webpackHotDevClient.js: 120
+handleWarnings @ webpackHotDevClient.js: 125
+push../node_modules/react-dev-utils/webpackHotDevClient.js.connection.onmessage @ webpackHotDevClient.js: 190
+push../node_modules/sockjs-client/lib/event/eventtarget.js.EventTarget.dispatchEvent @ eventtarget.js: 56
+(anonymous) @ main.js: 282
+push../node_modules/sockjs-client/lib/main.js.SockJS._transportMessage @ main.js: 280
+push../node_modules/sockjs-client/lib/event/emitter.js.EventEmitter.emit @ emitter.js: 53
+WebSocketTransport.ws.onmessage @ websocket.js: 36
