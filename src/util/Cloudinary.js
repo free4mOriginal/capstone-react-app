@@ -23,14 +23,17 @@ export class Upload extends React.Component {
 
         for (let value of formData.values()) {
             formValues.push(value);
+            console.log(formValues);
         };
 
-        let tagID = formValues[0];
+        const tagID = formValues[0];
+        const caption = formValues[1];
 
         formData.append('file', file);
         formData.append('cloud_name', 'free4m');
         formData.append("upload_preset", "free4m");
-        formData.append("tags", tagID);
+        formData.append("tags", [tagID, 'all']);
+        formData.append("context", caption);
 
         let res = await fetch(
             "https://api.cloudinary.com/v1_1/free4m/auto/upload",
@@ -48,8 +51,8 @@ export class Upload extends React.Component {
     render() {
         return (
             <div>
-                {this.state.showForm ? <Form /> : <Logo /> }
-                <button id="upload" onClick={this.handleClick}>Upload</button>
+                {this.state.showForm ? <Form processFile={this.processFile} /> : <Logo /> }
+                <button id="upload" onClick={this.handleClick}>New</button>
             </div>
         )
     }
@@ -59,12 +62,23 @@ export const Cloudinary = {
     imageLoading(stateName) {
         return fetch(`https://res.cloudinary.com/free4m/image/list/${stateName}.json`).then(resp => resp.json().then(jsonResp => {
             if (jsonResp.resources) {
-                return jsonResp.resources.map(item => ({
-                    tag: `${stateName}`,
-                    public_id: item.public_id,
-                    description: item.context.custom.caption,
-                    version: item.version,
-                }));
+                return jsonResp.resources.map(item => {
+                    if (item.context) {
+                        return {
+                            tag: `${stateName}`,
+                            public_id: item.public_id,
+                            description: item.context.custom.caption,
+                            version: item.version,
+                        }
+                    } else {
+                        return {
+                            tag: `${stateName}`,
+                            public_id: item.public_id,
+                            description: 'N/A',
+                            version: item.version,
+                        }
+                    }
+                });
             } else {
                 return [];
             }

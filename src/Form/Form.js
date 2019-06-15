@@ -6,13 +6,17 @@ class Form extends React.Component {
     render() {
         return (
             <form name="mainForm" id="mainForm">
-                <select name="jewelryType" id="jewelryType">
-                    <option value="handmade">Handmade</option>
+                <span><select name="jewelryType" id="jewelryType">
+                    <option value="handmade" defaultChecked>Handmade</option>
                     <option value="traditional">Traditional</option>
                     <option value="zbrush">ZBrush</option>
-                </select>
-                <input type="file" onChange={this.processFile} />
-            </form>
+                </select>|  Category</span>
+                <p>
+                    <input type="text" id="caption" name="caption" required />
+                    |  Description
+                </p>
+                <input type="file" onChange={this.props.processFile} />
+            </form >
         );
     }
 }

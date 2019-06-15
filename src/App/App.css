@@ -91,7 +91,7 @@ aside h2 {
   z-index: 3;
 }
 
-p, li {
+p, li, form {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-weight: 200;
   color: lightgray;
