@@ -9,39 +9,19 @@ import { Upload, Cloudinary, SampleImg } from '../util/Cloudinary';
 // let zbrush = [];
 // let all = [handmade.concat(traditional).concat(zbrush)];
 
-// async function populateState(stateArray, stateName) {
-//   return await fetch(`https://res.cloudinary.com/free4m/image/list/${stateName}.json`).then(resp => resp.json().then(json => {
-//     for (let i = 0; i < json.resources.length; i++) {
-//       return stateArray.push(json.resources[i]);
-//     }
-//   })
-//     .then(this.setState({searchResults: searchResults});));
-// }
-
 // populateState(handmade, 'handmade');
 // populateState(traditional, 'traditional');
 // populateState(zbrush, 'zbrush');
 
 // const initialState = [...handmadeState, ...traditionalState, ...zbrushState];
 
-// const handmadeState = axios.get('https://res.cloudinary.com/free4m/image/list/handmade.json')
-//   .then(response => response.json().then(json => json))
-//   .catch((error) => console.error(`Error! ${error}`));
-
-// savePlaylist() {
-//   let trackURIs = [];
-//   for (let i=0; i<this.state.playlistTracks.length; i++) {
-//     trackURIs.push(this.state.playlistTracks[i].uri);
-//   }
-//   Spotify.savePlaylist(this.state.playlistName, trackURIs);
-//   this.setState({playlistName: 'New Playlist'});
-// }
-
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      assets: []
+      handmade: [],
+      traditional: [],
+      zbrush: [],
     };
     this.populateState = this.populateState.bind(this);
     this.filterFnx = this.filterFnx.bind(this);
@@ -66,9 +46,13 @@ class App extends Component {
   // }
 
   populateState() {
-    Cloudinary.imageLoading('handmade').then(returnedArray => {
-      this.setState({ assets: returnedArray });
-    });
+    let tags = ['handmade', 'traditional', 'zbrush'];
+
+    for (let i=0; i<tags.length; i++) {
+      Cloudinary.imageLoading(tags[i]).then(returnedArray => {
+        this.setState({ [tags[i]]: returnedArray });
+      });
+    }
   }
 
   componentDidMount(){
@@ -123,8 +107,7 @@ class App extends Component {
         </aside>
 
         <main>
-          {/* <a onClick={this.populateState}><SampleImg /></a> */}
-          <Feed currentState={this.state.assets.sort(() => Math.random() - 0.5)} />
+          <Feed currentState={this.state.handmade.concat(this.state.traditional, this.state.zbrush).sort(() => Math.random() - 0.5)} />
           <p><a href="#top">Back to top</a></p>
           <div className="credits">
             <span>&copy; 2019 <span className="white">Karina Liner</span> – Jewelry, Photography</span>
