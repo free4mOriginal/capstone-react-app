@@ -48,14 +48,14 @@ class App extends Component {
   populateState() {
     let tags = ['handmade', 'traditional', 'zbrush'];
 
-    for (let i=0; i<tags.length; i++) {
+    for (let i = 0; i < tags.length; i++) {
       Cloudinary.imageLoading(tags[i]).then(returnedArray => {
         this.setState({ [tags[i]]: returnedArray });
       });
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.populateState();
   }
 
