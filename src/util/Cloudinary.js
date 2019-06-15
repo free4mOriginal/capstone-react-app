@@ -1,9 +1,25 @@
 import React from "react";
 import cloudinary from 'cloudinary-core';
+import Form from '../Form/Form';
 
 // import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios } from 'react-axios';
 
+class UploadButton extends React.Component {
+    render() {
+        return <button id="upload">Upload</button>
+    }
+}
+
 export class Upload extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { showForm: false }
+    }
+
+    handleClick = ev => {
+        this.setState({ showForm: !this.state.showForm })
+    }
+
     processFile = async e => {
         let file = e.target.files[0];
         let myForm = document.querySelector('#mainForm');
@@ -32,21 +48,15 @@ export class Upload extends React.Component {
 
         let json = await res.json();
         console.log(JSON.stringify(json.secure_url));
-    };
+    }
 
     render() {
         return (
             <div>
-                <form name="mainForm" id="mainForm">
-                    <select name="jewelryType" id="jewelryType">
-                        <option value="handmade">Handmade</option>
-                        <option value="traditional">Traditional</option>
-                        <option value="zbrush">ZBrush</option>
-                    </select>
-                    <input type="file" onChange={this.processFile} />
-                </form>
+                {this.state.showForm ? <span>Graph View!</span> : <UploadButton />}
+                <button onClick={this.handleClick}>Switch me !</button>
             </div>
-        );
+        )
     }
 };
 
@@ -72,7 +82,7 @@ const cloudinaryCore = new cloudinary.Cloudinary({ cloud_name: 'free4m' });
 export class SampleImg extends React.Component {
     render() {
         return (
-        <img src={cloudinaryCore.url('biruza-big_ljgv9v')} alt="test" width="100px" />
+            <img src={cloudinaryCore.url('biruza-big_ljgv9v')} alt="test" width="100px" />
         )
     }
 }

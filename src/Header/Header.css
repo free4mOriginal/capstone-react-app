@@ -11,6 +11,17 @@ header {
     z-index: 1;
   }
 
+#upload {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  color: black; 
+  opacity: 0.5;
+  display: flex;
+  flex-direction:column;
+  width: 70px;
+}
+
 @media screen and (max-width:640px) {
   header {
       position: relative;

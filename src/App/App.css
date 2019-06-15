@@ -46,19 +46,6 @@ main {
   min-height: 100vh;
 }
 
-/* Header form */
-
-form {
-  position: fixed;
-  left: 120px;
-  top: 40px;
-  color: black; 
-  opacity: 0.5;
-  display: flex;
-  flex-direction: column;
-  width: 100px;
-}
-
 /*  SIDE */
 
 aside {

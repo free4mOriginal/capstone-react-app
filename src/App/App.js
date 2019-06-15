@@ -36,10 +36,9 @@ class App extends Component {
   render() {
     return (
       <div className="App" id="backgroundContainer">
-        <Header />
+        <Header upload={Upload} />
 
         <aside>
-          <Upload />
           <div id="aside-container">
             <Profile />
             <Contact />
