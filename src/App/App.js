@@ -23,6 +23,7 @@ class App extends Component {
       handmade: [],
       traditional: [],
       zbrush: [],
+      filtered: [],
     };
     this.populateState = this.populateState.bind(this);
     this.filterFnx = this.filterFnx.bind(this);
@@ -53,10 +54,8 @@ class App extends Component {
       Cloudinary.imageLoading(tags[i]).then(returnedArray => {
         if (tags[i] === 'all') {
           this.setState({ initialState: returnedArray.sort(() => Math.random() - 0.5) });
-          console.log(this.state.initialState);
         } else {
           this.setState({ [tags[i]]: returnedArray });
-          console.log(this.state[tags[i]]);
         }
       });
     }
@@ -70,9 +69,9 @@ class App extends Component {
   // sent from the onClick method in the buttons;
   filterFnx(category) {
     if (category === 'all') {
-      this.setState({ filtered: [...this.state.assets] });
+      this.setState({ filtered: this.state.initialState });
     } else {
-      this.setState({ filtered: [...this.state.category] });
+      this.setState({ filtered: this.state[category] });
     }
   }
 
@@ -114,7 +113,7 @@ class App extends Component {
         </aside>
 
         <main>
-          <Feed currentState={this.state.initialState} />
+          <Feed currentState={this.state.filtered} />
           <p><a href="#top">Back to top</a></p>
           <div className="credits">
             <span>&copy; 2019 <span className="white">Karina Liner</span> – Jewelry, Photography</span>
