@@ -5,7 +5,6 @@ import Buttons from '../Buttons/Buttons';
 import Contact from '../Contact/Contact';
 import Credits from '../Credits/Credits';
 import Profile from '../Profile/Profile';
-import Header from '../Header/Header';
 import { Upload, Cloudinary } from '../util/Cloudinary';
 
 
@@ -13,13 +12,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      assets: []
+      assets: [],
     };
     this.populateState = this.populateState.bind(this);
-  }
-
-  sort(array) {
-    return array.sort(() => Math.random() - 0.5);
   }
 
   populateState(stateName) {
@@ -32,11 +27,18 @@ class App extends Component {
     this.populateState('all');
   }
 
+  sort(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
+
   // Main render method that takes in rendered elements from Feed.js:
   render() {
     return (
       <div className="App" id="backgroundContainer">
-        <Header upload={Upload} />
+
+        <header id="top">
+          <Upload />
+        </header>
 
         <aside>
           <div id="aside-container">
@@ -57,8 +59,3 @@ class App extends Component {
 };
 
 export default App;
-
-// let MyComponent = Loadable({
-//   loader: () => import('./MyComponent'),
-//   loading: () => <div>Loading...</div>
-// });

@@ -1,14 +1,9 @@
 import React from "react";
 import cloudinary from 'cloudinary-core';
 import Form from '../Form/Form';
+import Logo from '../Logo/Logo';
 
 // import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios } from 'react-axios';
-
-class UploadButton extends React.Component {
-    render() {
-        return <button id="upload">Upload</button>
-    }
-}
 
 export class Upload extends React.Component {
     constructor(props) {
@@ -53,8 +48,8 @@ export class Upload extends React.Component {
     render() {
         return (
             <div>
-                {this.state.showForm ? <span>Graph View!</span> : <UploadButton />}
-                <button onClick={this.handleClick}>Switch me !</button>
+                {this.state.showForm ? <Form /> : <Logo /> }
+                <button id="upload" onClick={this.handleClick}>Upload</button>
             </div>
         )
     }

@@ -3,12 +3,6 @@ import Figure from '../Figure/Figure';
 import './Feed.css';
 
 class Feed extends React.Component {
-
-    // Randomizer method for the main feed array, sorts the order of array:
-    // shuffle(array) {
-    //     return array.sort(() => Math.random() - 0.5);
-    // } 
-    
     render() {
         return (
             <div className="flex--container">
