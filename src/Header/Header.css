@@ -1,0 +1,19 @@
+header {
+    grid-area: header;
+    position: sticky;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    color: white;
+    height: 160px;
+    align-items: center;
+    top: 20px;
+    z-index: 1;
+  }
+
+@media screen and (max-width:640px) {
+  header {
+      position: relative;
+      height: 120px;
+  }
+}

@@ -9,3 +9,16 @@ button {
     background-color: rgba(19, 0, 145, 0.5);
     color: #fff;
   }
+
+  #filter {
+    margin: auto 40px 40px 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 640px) {
+    #filter {
+      margin: auto 8px;
+    }
+  } 

@@ -6,19 +6,6 @@ body {
   font-size: 11pt;
 }
 
-header {
-  grid-area: header;
-  position: sticky;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  color: white;
-  height: 160px;
-  align-items: center;
-  top: 20px;
-  z-index: 1;
-}
-
 main {
   grid-area: main;
   justify-content: center;
@@ -79,19 +66,12 @@ aside {
   position: fixed;
   color: white;
   height: 100vh;
-  width: 20em;
+  width: 22em;
   display: flex;
   justify-content: center;
   -webkit-animation: fadein 2s;
   -moz-animation: fadein 2s;
   animation: fadein 2s;
-}
-
-aside img {
-  position: absolute;
-  top: 60px;
-  left: -20px;
-  width: 130px;
 }
 
 @keyframes fadein {
@@ -107,7 +87,7 @@ aside img {
   100% { opacity: 1; }
 }
 
-#aboutDiv {
+#aside-container {
   display: flex;
   flex-direction: column;
   padding: 20px 0 20px 20px;
@@ -131,36 +111,6 @@ p, li {
   list-style: none;
 }
 
-#aboutBox {
-  background-color: rgba(255, 230, 230, 0.2);
-  border-radius: 10%;
-  border-color: white;
-  padding: 5px 25px 5px 25px;
-  margin: 10px 20px 10px 20px;
-  max-width: 230px;
-}
-
-#contactBox {
-  text-align: center;
-  margin-left: -40px;
-}
-
-#filter {
-  margin: auto 40px 40px 40px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.credits {
-  display: flex;
-  flex-direction: column;
-  margin: 40px;
-  color: lightgray;
-  font-weight: 200;
-  font-size: small;
-}
-
 .white {
   color: white;
   font-weight: 600;
@@ -168,36 +118,6 @@ p, li {
 
 .smaller {
   font-size: x-small;
-}
-
-main>p>a {
-  text-decoration: none;
-  color: #fff;
-  font-weight: bolder;
-}
-
-/* Social logos colors */
-
-#social {
-  font-size: 24px;
-  text-align: center;
-  margin-top: 10px;
-}
-
-.fa-instagram {
-  color: transparent;
-  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-  background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-  background-clip: text;
-  -webkit-background-clip: text;
-}
-
-.fa-linkedin {
-  color: #0077B5;
-}
-
-.fa-facebook {
-  color: #3b5998;
 }
 
 /* Mobile */
@@ -211,23 +131,10 @@ main>p>a {
           "main"
   }
 
-  header {
-      position: relative;
-      height: 120px;
-  }
-
   aside {
       position: relative;
       height: auto;
       width: auto;
-  }
-  
-  aside img {
-      top: auto;
-      left: auto;
-      width: 100px;
-      margin: -100px 0 0 -50px;
-      z-index: 999;
   }
   
   aside h2 {
@@ -235,25 +142,9 @@ main>p>a {
       margin: -50px 0 10px 70px;
   }
 
-  #aboutDiv {
+  #aside-container {
       margin-top: 80px;
       display: block;
       padding: 10px;
-  }
-
-  #aboutBox {
-      margin: auto;
-      padding: auto;
-      max-width: 220px;
-  }
-  
-  #contactBox {
-      margin: auto;
-      padding: auto;
-      margin-left: -40px;
-  }
-
-  #filter {
-    margin: auto 8px;
   }
 } 
