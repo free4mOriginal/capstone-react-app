@@ -47,15 +47,20 @@ class App extends Component {
   //   }
   // }
 
+  sort(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
+
   populateState() {
     let tags = ['all', 'handmade', 'traditional', 'zbrush'];
 
     for (let i = 0; i < tags.length; i++) {
       Cloudinary.imageLoading(tags[i]).then(returnedArray => {
         if (tags[i] === 'all') {
-          this.setState({ initialState: returnedArray.sort(() => Math.random() - 0.5) });
+          this.setState({ initialState: this.sort(returnedArray) });
+          this.setState({ filtered: this.sort(returnedArray) });
         } else {
-          this.setState({ [tags[i]]: returnedArray });
+          this.setState({ [tags[i]]: this.sort(returnedArray) });
         }
       });
     }
@@ -63,6 +68,7 @@ class App extends Component {
 
   componentDidMount() {
     this.populateState();
+    this.setState()
   }
 
   // Filtering method that sets the current state of images to only the selected category
