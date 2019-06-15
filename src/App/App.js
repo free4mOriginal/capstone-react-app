@@ -1,84 +1,29 @@
 import React, { Component } from 'react';
 import './App.css';
 import Feed from '../Feed/Feed';
-// import imagesALL from '../util/FeedStaticObj';
-import { Upload, Cloudinary, SampleImg } from '../util/Cloudinary';
-
-// let handmade = [];
-// let traditional = [];
-// let zbrush = [];
-// let all = [handmade.concat(traditional).concat(zbrush)];
-
-// populateState(handmade, 'handmade');
-// populateState(traditional, 'traditional');
-// populateState(zbrush, 'zbrush');
-
-// const initialState = [...handmadeState, ...traditionalState, ...zbrushState];
+import { Upload, Cloudinary } from '../util/Cloudinary';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      initialState: [],
-      handmade: [],
-      traditional: [],
-      zbrush: [],
-      filtered: [],
+      assets: []
     };
     this.populateState = this.populateState.bind(this);
-    this.filterFnx = this.filterFnx.bind(this);
   }
-
-  // async populateStates(stateName) {
-  //   return await fetch(`https://res.cloudinary.com/free4m/image/list/${stateName}.json`).then(resp => resp.json().then(json => {
-  //     for (let i = 0; i < json.resources.length; i++) {
-  //       console.log(this.state.assets)
-  //       this.setState({ stateName: this.state.assets[stateName].push(json.resources[i]) });
-  //     }
-  //   }));
-  // }
-
-  // populateState() {
-  //   let tags = ['handmade', 'traditional', 'zbrush'];
-  //   let fullAssetsArray = [];
-
-  //   for (let i=0; i<tags.length; i++) {
-  //     Cloudinary.imageLoading(tags[i]).then(returnedArray => fullAssetsArray.push(...returnedArray));
-  //   }
-  // }
 
   sort(array) {
     return array.sort(() => Math.random() - 0.5);
   }
 
-  populateState() {
-    let tags = ['all', 'handmade', 'traditional', 'zbrush'];
-
-    for (let i = 0; i < tags.length; i++) {
-      Cloudinary.imageLoading(tags[i]).then(returnedArray => {
-        if (tags[i] === 'all') {
-          this.setState({ initialState: this.sort(returnedArray) });
-          this.setState({ filtered: this.sort(returnedArray) });
-        } else {
-          this.setState({ [tags[i]]: this.sort(returnedArray) });
-        }
-      });
-    }
+  populateState(stateName) {
+    Cloudinary.imageLoading(stateName).then(returnedArray => {
+      this.setState({ assets: this.sort(returnedArray) });
+    });
   }
 
   componentDidMount() {
-    this.populateState();
-    this.setState()
-  }
-
-  // Filtering method that sets the current state of images to only the selected category
-  // sent from the onClick method in the buttons;
-  filterFnx(category) {
-    if (category === 'all') {
-      this.setState({ filtered: this.state.initialState });
-    } else {
-      this.setState({ filtered: this.state[category] });
-    }
+    this.populateState('all');
   }
 
   // Main render method that takes in rendered elements from Feed.js:
@@ -110,16 +55,16 @@ class App extends Component {
             </div>
 
             <div id="filter">
-              <button id="handmade" onClick={() => this.filterFnx('handmade')}>Contemporary Collection</button>
-              <button id="traditional" onClick={() => this.filterFnx('traditional')}> Custom Jewelry Design</button>
-              <button id="zbrush" onClick={() => this.filterFnx('zbrush')}>3D Sculpted Jewelry</button>
-              <button id="all" onClick={() => this.filterFnx('all')}>ALL</button>
+              <button id="handmade" onClick={() => this.populateState('handmade')}>Contemporary Collection</button>
+              <button id="traditional" onClick={() => this.populateState('traditional')}> Custom Jewelry Design</button>
+              <button id="zbrush" onClick={() => this.populateState('zbrush')}>3D Sculpted Jewelry</button>
+              <button id="all" onClick={() => this.populateState('all')}>ALL</button>
             </div>
           </div>
         </aside>
 
         <main>
-          <Feed currentState={this.state.filtered} />
+          <Feed currentState={this.state.assets} />
           <p><a href="#top">Back to top</a></p>
           <div className="credits">
             <span>&copy; 2019 <span className="white">Karina Liner</span> – Jewelry, Photography</span>
