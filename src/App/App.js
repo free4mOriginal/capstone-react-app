@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Feed from '../Feed/Feed';
+import Buttons from '../Buttons/Buttons';
 import { Upload, Cloudinary } from '../util/Cloudinary';
 
 class App extends Component {
@@ -53,13 +54,7 @@ class App extends Component {
                 </li>
               </ul>
             </div>
-
-            <div id="filter">
-              <button id="handmade" onClick={() => this.populateState('handmade')}>Contemporary Collection</button>
-              <button id="traditional" onClick={() => this.populateState('traditional')}> Custom Jewelry Design</button>
-              <button id="zbrush" onClick={() => this.populateState('zbrush')}>3D Sculpted Jewelry</button>
-              <button id="all" onClick={() => this.populateState('all')}>ALL</button>
-            </div>
+            <Buttons populateState={this.populateState} />
           </div>
         </aside>
 
