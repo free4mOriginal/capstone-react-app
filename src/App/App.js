@@ -20,6 +20,7 @@ class App extends Component {
     super(props);
     this.state = {
       assets: [],
+      filtered: [],
     };
     this.populateState = this.populateState.bind(this);
     this.filterFnx = this.filterFnx.bind(this);
@@ -45,7 +46,8 @@ class App extends Component {
 
   populateState() {
     Cloudinary.imageLoading('all').then(returnedArray => {
-      this.setState({ assets: returnedArray });
+      this.setState({ assets: returnedArray.sort(() => Math.random() - 0.5) });
+      this.setState({ filtered: this.state.assets });
     });
   }
 
@@ -55,11 +57,11 @@ class App extends Component {
 
   // Filtering method that sets the current state of images to only the selected category
   // sent from the onClick method in the buttons;
-  filterFnx(toFilter) {
-    if (toFilter === 'All') {
-      this.setState({ initialState: [...this.state.assets.initialState] });
+  filterFnx(category) {
+    if (category === 'all') {
+      this.setState({ filtered: [...this.state.assets] });
     } else {
-      this.setState({ assets: [...toFilter] });
+      this.setState({ filtered: [...this.state.category] });
     }
   }
 
@@ -92,16 +94,16 @@ class App extends Component {
             </div>
 
             <div id="filter">
-              <button id="Handmade" onClick={() => this.filterFnx(this.state.handmade)}>Contemporary Collection</button>
-              <button id="Traditional" onClick={() => this.filterFnx(this.state.traditional)}> Custom Jewelry Design</button>
-              <button id="ZBrush" onClick={() => this.filterFnx(this.state.zbrush)}>3D Sculpted Jewelry</button>
-              <button id="All" onClick={() => this.filterFnx('All')}>ALL</button>
+              <button id="handmade" onClick={() => this.filterFnx('handmade')}>Contemporary Collection</button>
+              <button id="traditional" onClick={() => this.filterFnx('traditional')}> Custom Jewelry Design</button>
+              <button id="zbrush" onClick={() => this.filterFnx('zbrush')}>3D Sculpted Jewelry</button>
+              <button id="all" onClick={() => this.filterFnx('all')}>ALL</button>
             </div>
           </div>
         </aside>
 
         <main>
-          <Feed currentState={this.state.assets.sort(() => Math.random() - 0.5)} />
+          <Feed currentState={this.state.filtered} />
           <p><a href="#top">Back to top</a></p>
           <div className="credits">
             <span>&copy; 2019 <span className="white">Karina Liner</span> – Jewelry, Photography</span>
