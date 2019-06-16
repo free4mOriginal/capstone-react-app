@@ -1,0 +1,28 @@
+header {
+    grid-area: header;
+    position: sticky;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    color: white;
+    height: 160px;
+    align-items: center;
+    top: 20px;
+    z-index: 1;
+  }
+
+#upload {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  opacity: 0;
+  width: 60px;
+  padding: 20px 10px 20px 10px;
+}
+
+@media screen and (max-width:640px) {
+  header {
+      position: relative;
+      height: 120px;
+  }
+}

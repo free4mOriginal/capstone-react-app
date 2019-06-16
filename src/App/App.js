@@ -1,73 +1,67 @@
 import React, { Component } from 'react';
 import './App.css';
 import Feed from '../Feed/Feed';
-import imagesALL from '../util/FeedStaticObj';
+import Buttons from '../Buttons/Buttons';
+import Contact from '../Contact/Contact';
+import Credits from '../Credits/Credits';
+import Profile from '../Profile/Profile';
+import { Upload, Cloudinary } from '../util/Cloudinary';
 
-const initialState = [...imagesALL.Handmade, ...imagesALL.Traditional, ...imagesALL.ZBrush];
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      images: initialState,
-    }
+      assets: [],
+    };
+    this.populateState = this.populateState.bind(this);
   }
 
-  // Filtering method that sets the current state of images to only the selected category
-  // sent from the onClick method in the buttons;
-  filterFnx(toFilter) {
-    if (toFilter === 'All') {
-      this.setState({ images: initialState });
-    } else {
-      this.setState({ images: [...toFilter] });
-    }
+  // Dynamically populate the empty assets array with Cloundinary's live account content through API GET call, and then sort the returned array so that newest three items always show first;
+  populateState(stateName) {
+    Cloudinary.imageLoading(stateName).then(returnedArray => {
+      let firstThreeItems = [];
+      let sortedRemaining = [];
+      for (let i=0; i<3; i++) {
+        firstThreeItems.push(returnedArray.shift());
+      }
+      sortedRemaining = this.sort(returnedArray);
+      this.setState({ assets: [...firstThreeItems, ...sortedRemaining] });
+    });
   }
 
-  // Main render method that takes in rendered elements from Feed.js:
+  // Initial Feed population after all other commonents have loaded;
+  componentDidMount() {
+    this.populateState('all');
+  }
+
+  // Randomly sort the incoming array;
+  sort(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
+
+  // Main render method that takes in rendered elements from Feed.js and other Components;
   render() {
     return (
       <div className="App" id="backgroundContainer">
 
         <header id="top">
-          <img src={require('../assets/images/logo-white.png')} width="250" alt="Karina Liner" />
+          <Upload populateState={this.populateState}/>
         </header>
 
         <aside>
-          <div id="aboutDiv">
-            <img src={require('../assets/images/profile-photo.png')} alt="profile" />
-            <h2>About Me</h2>
-            <div id="aboutBox">
-              <p>I received my formal training from the Erevan Art Academy, Armenia in Fine Art and Ceramics and worked and exhibited in the US, Europe and the Middle East. My work is a unique blend of organic design and sculptural jewelry, using both precious and semi-precious stones hand-picked for quality clarity and uniqueness.</p>
-            </div>
-
-            <div id="contactBox">
-              <ul>
-                <li>5 1 0 . 3 3 3 . 5 4 4 0</li>
-                <li>KarinaLiner @ gmail</li>
-                <li id="social">
-                  <a href="https://www.linkedin.com/in/karina-liner-5530a03a/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin"></i></a> . <a href="https://www.instagram.com/karinaliner/" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a> . <a href="https://www.facebook.com/linerart/" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook"></i></a>
-                </li>
-              </ul>
-            </div>
-
-            <div id="filter">
-              <button id="Handmade" onClick={() => this.filterFnx(imagesALL.Handmade)}>Contemporary Collection</button>
-              <button id="Traditional" onClick={() => this.filterFnx(imagesALL.Traditional)}> Custom Jewelry Design</button>
-              <button id="ZBrush" onClick={() => this.filterFnx(imagesALL.ZBrush)}>3D Sculpted Jewelry</button>
-              <button id="All" onClick={() => this.filterFnx('All')}>ALL</button>
-            </div>
+          <div id="aside-container">
+            <Profile />
+            <Contact />
+            <Buttons populateState={this.populateState} />
           </div>
         </aside>
 
         <main>
-          <Feed img={this.state.images} />
-          <p><a href="#top">Back to top</a></p>
-          <div className="credits">
-            <span>&copy; 2019 <span className="white">Karina Liner</span> – Jewelry, Photography</span>
-            <span><span className="white">Zhana Liner</span> – Design & Web Development</span>
-            <span className="smaller">Brian Patrick Tagalog, wallpaper</span>
-          </div>
+          <Feed currentState={this.state.assets} />
+          <Credits />
         </main>
+
       </div>
     );
   }
