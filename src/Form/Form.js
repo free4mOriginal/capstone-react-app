@@ -17,11 +17,12 @@ class Form extends React.Component {
                     |  Description
                 </p>
                 <input type="file" onChange={this.props.processFile} />
-                {/* <span><button type="reset">Reset</button>
-                <button type="submit" onSubmit={this.props.processFile}>Submit</button></span> */}
             </form >
         );
     }
 }
 
 export default Form;
+
+/* <span><button type="reset">Reset</button>
+                <button type="submit" onSubmit={this.props.processFile}>Submit</button></span> */
