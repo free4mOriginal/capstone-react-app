@@ -8,13 +8,22 @@ import Logo from '../Logo/Logo';
 export class Upload extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { showForm: false }
+        this.state = { showForm: false };
+        this.handleClick = this.handleClick.bind(this);
+        this.toggle = this.toggle.bind(this);
     }
 
-    handleClick = ev => {
-        this.setState({ showForm: !this.state.showForm })
+    // Toggles the form visibility variable on and off;
+    toggle() {
+        this.setState({ showForm: !this.state.showForm });
     }
 
+    // Turns on toggling after click;
+    handleClick = (e) => {
+        this.toggle();
+    }
+
+    // Main upload form functionality; API POST;
     processFile = async e => {
         let file = e.target.files[0];
         let myForm = document.querySelector('#mainForm');
@@ -23,17 +32,16 @@ export class Upload extends React.Component {
 
         for (let value of formData.values()) {
             formValues.push(value);
-            console.log(formValues);
         };
 
         const tagID = formValues[0];
-        const caption = formValues[1];
+        const description = formValues[1];
 
         formData.append('file', file);
-        formData.append('cloud_name', 'free4m');
+        formData.append("cloud_name", "free4m");
         formData.append("upload_preset", "free4m");
         formData.append("tags", [tagID, 'all']);
-        formData.append("context", caption);
+        formData.append("context", `caption=${description}`);
 
         let res = await fetch(
             "https://api.cloudinary.com/v1_1/free4m/auto/upload",
@@ -46,8 +54,13 @@ export class Upload extends React.Component {
 
         let json = await res.json();
         console.log(JSON.stringify(json.secure_url));
+
+        // after form submition toggles form OFF and repopulates main Feed with new items;
+        this.toggle();
+        this.props.populateState('all');
     }
 
+    // Renders <Form /> or <Logo /> depending on showForm variable trutiness;
     render() {
         return (
             <div>
@@ -58,6 +71,7 @@ export class Upload extends React.Component {
     }
 };
 
+// Main Cloudinary GET request, returns a populated array of items from the Cloudinary server;
 export const Cloudinary = {
     imageLoading(stateName) {
         return fetch(`https://res.cloudinary.com/free4m/image/list/${stateName}.json`).then(resp => resp.json().then(jsonResp => {
@@ -86,6 +100,7 @@ export const Cloudinary = {
     }
 };
 
+// Sample image Component
 const cloudinaryCore = new cloudinary.Cloudinary({ cloud_name: 'free4m' });
 
 export class SampleImg extends React.Component {

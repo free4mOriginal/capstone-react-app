@@ -3,6 +3,7 @@ import './Contact.css';
 
 class Contact extends React.Component {
 
+    //Renders the Contact Me box elements;
     render() {
         return (
             <div id="contactBox">

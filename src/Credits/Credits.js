@@ -1,8 +1,8 @@
 import React from 'react';
 import './Credits.css';
 
+// Renders the Credits section with the Back to Top functionality;
 class Credits extends React.Component {
-
     render() {
         return (
             <div className="credits">

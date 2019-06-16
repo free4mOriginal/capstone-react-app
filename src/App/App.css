@@ -53,7 +53,7 @@ aside {
   position: fixed;
   color: white;
   height: 100vh;
-  width: 22em;
+  width: 21em;
   display: flex;
   justify-content: center;
   -webkit-animation: fadein 2s;

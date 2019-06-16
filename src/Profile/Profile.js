@@ -1,8 +1,8 @@
 import React from 'react';
 import './Profile.css';
 
+// Renders the Profile section;
 class Profile extends React.Component {
-
     render() {
         return (
             <div>

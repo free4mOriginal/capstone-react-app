@@ -17,27 +17,36 @@ class App extends Component {
     this.populateState = this.populateState.bind(this);
   }
 
+  // Dynamically populate the empty assets array with Cloundinary's live account content through API GET call, and then sort the returned array so that newest three items always show first;
   populateState(stateName) {
     Cloudinary.imageLoading(stateName).then(returnedArray => {
-      this.setState({ assets: this.sort(returnedArray) });
+      let firstThreeItems = [];
+      let sortedRemaining = [];
+      for (let i=0; i<3; i++) {
+        firstThreeItems.push(returnedArray.shift());
+      }
+      sortedRemaining = this.sort(returnedArray);
+      this.setState({ assets: [...firstThreeItems, ...sortedRemaining] });
     });
   }
 
+  // Initial Feed population after all other commonents have loaded;
   componentDidMount() {
     this.populateState('all');
   }
 
+  // Randomly sort the incoming array;
   sort(array) {
     return array.sort(() => Math.random() - 0.5);
   }
 
-  // Main render method that takes in rendered elements from Feed.js:
+  // Main render method that takes in rendered elements from Feed.js and other Components;
   render() {
     return (
       <div className="App" id="backgroundContainer">
 
         <header id="top">
-          <Upload />
+          <Upload populateState={this.populateState}/>
         </header>
 
         <aside>

@@ -3,6 +3,7 @@ import './Form.css';
 
 class Form extends React.Component {
 
+    // Renders main upload form elements;
     render() {
         return (
             <form name="mainForm" id="mainForm">

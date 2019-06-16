@@ -1,7 +1,7 @@
 import React from 'react';
 import './Figure.css';
 
-// Render individual <figure> items for the main feed:
+// Render individual <figure> items for the main feed using the incoming props;
 class Figure extends React.Component {
     render() {
         return (

@@ -1,3 +1,5 @@
+// The static assets object;
+
 const imagesALL = {
     Handmade: [
         {

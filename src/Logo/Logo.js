@@ -1,6 +1,7 @@
 import React from 'react';
 import './Logo.css';
 
+// Renders the logo image;
 class Logo extends React.Component {
     render() {
         return (
