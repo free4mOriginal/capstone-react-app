@@ -20,13 +20,11 @@ class App extends Component {
   // Dynamically populate the empty assets array with Cloundinary's live account content through API GET call, and then sort the returned array so that newest three items always show first;
   populateState(stateName) {
     Cloudinary.imageLoading(stateName).then(returnedArray => {
-      let firstThreeItems = [];
+      let first = [];
       let sortedRemaining = [];
-      for (let i=0; i<3; i++) {
-        firstThreeItems.push(returnedArray.shift());
-      }
+      first.push(returnedArray.shift());
       sortedRemaining = this.sort(returnedArray);
-      this.setState({ assets: [...firstThreeItems, ...sortedRemaining] });
+      this.setState({ assets: [...first, ...sortedRemaining] });
     });
   }
 
