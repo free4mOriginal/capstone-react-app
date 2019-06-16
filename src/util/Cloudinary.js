@@ -39,7 +39,7 @@ export class Upload extends React.Component {
 
         formData.append('file', file);
         formData.append("cloud_name", "free4m");
-        formData.append("upload_preset", "free4m");
+        formData.append("upload_preset", "karina");
         formData.append("tags", [tagID, 'all']);
         formData.append("context", `caption=${description}`);
 
@@ -88,7 +88,7 @@ export const Cloudinary = {
                         return {
                             tag: `${stateName}`,
                             public_id: item.public_id,
-                            description: 'N/A',
+                            description: '...',
                             version: item.version,
                         }
                     }
