@@ -8,6 +8,9 @@ body {
 
 main {
   grid-area: main;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   text-align: center;
   min-height: 85vh;
@@ -45,17 +48,16 @@ main {
 }
 
 #spinner {
-  width: 35px;
-  height: 35px;
+  width: 50px;
+  height: 50px;
   display: inline-block;
   border-radius: 100%;
-  border-width: 2px;
+  border-width: 5px;
   border-style: solid;
   border-image: initial;
-  border-color: rgb(54, 215,183) rgb(54, 215, 183)transparent;
-  animation: 0.75s linear 0sinfinite normal bothrunning animation-7qzzer;
-  background: transparent!important;
-  animation-name: spinner;
+  border-color: rgba(255, 255, 255, 0.653) rgba(255, 255, 255, 0.831) transparent;
+  animation: 0.75s linear 0s infinite normal both running spinner;
+  background: transparent !important;
 }
 
 #backgroundContainer {

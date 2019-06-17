@@ -61,7 +61,7 @@ class App extends Component {
         </aside>
 
         <main>
-          {this.state.loading ? <div id="spinner"><p>Loading...</p></div> : <Feed currentState={this.state.assets} /> }
+          {this.state.loading ? <div id="spinner"></div> : <Feed currentState={this.state.assets} /> }
           <Credits />
         </main>
 
