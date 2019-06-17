@@ -13,6 +13,7 @@ class App extends Component {
     super(props);
     this.state = {
       assets: [],
+      loading: true,
     };
     this.populateState = this.populateState.bind(this);
   }
@@ -24,13 +25,17 @@ class App extends Component {
       let sortedRemaining = [];
       first.push(returnedArray.shift());
       sortedRemaining = this.sort(returnedArray);
-      this.setState({ assets: [...first, ...sortedRemaining] });
+      this.setState({
+        assets: [...first, ...sortedRemaining],
+        loading: false,
+      });
     });
   }
 
   // Initial Feed population after all other commonents have loaded;
   componentDidMount() {
     this.populateState('all');
+    // setTimeout(this.populateState('all'), 0);
   }
 
   // Randomly sort the incoming array;
@@ -44,7 +49,7 @@ class App extends Component {
       <div className="App" id="backgroundContainer">
 
         <header id="top">
-          <Upload populateState={this.populateState}/>
+          <Upload populateState={this.populateState} />
         </header>
 
         <aside>
@@ -56,7 +61,7 @@ class App extends Component {
         </aside>
 
         <main>
-          <Feed currentState={this.state.assets} />
+          {this.state.loading ? <div id="spinner"><p>Loading...</p></div> : <Feed currentState={this.state.assets} /> }
           <Credits />
         </main>
 

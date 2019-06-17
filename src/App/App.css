@@ -32,6 +32,32 @@ main {
   100% {transform: translateY(0px)}
 }
 
+@keyframes spinner {
+  0% {
+      transform: rotate(0deg) scale(1);
+  }
+  50% {
+      transform: rotate(180deg) scale(0.8);
+  }
+  100% {
+      transform: rotate(360deg) scale(1);
+  }
+}
+
+#spinner {
+  width: 35px;
+  height: 35px;
+  display: inline-block;
+  border-radius: 100%;
+  border-width: 2px;
+  border-style: solid;
+  border-image: initial;
+  border-color: rgb(54, 215,183) rgb(54, 215, 183)transparent;
+  animation: 0.75s linear 0sinfinite normal bothrunning animation-7qzzer;
+  background: transparent!important;
+  animation-name: spinner;
+}
+
 #backgroundContainer {
   background: url('../images/back.jpg') no-repeat fixed;
 
