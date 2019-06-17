@@ -6,14 +6,35 @@ body {
   font-size: 11pt;
 }
 
+#backgroundContainer {
+  background: url('../images/back.jpg') no-repeat fixed;
+
+  background-size: cover;
+  background-position: center;
+  display: grid;
+  grid-template-columns: 20rem auto;
+  grid-template-areas: 
+      "aside header"
+      "aside main"
+      "aside footer";
+
+  min-height: 100vh;
+}
+
+footer {
+  grid-area: footer;
+  text-align: center;
+  position: sticky;
+}
+
 main {
   grid-area: main;
   display: flex;
+  min-height: 50vh;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   text-align: center;
-  min-height: 85vh;
   z-index: 1;
   -webkit-animation-name: gallery;
   -webkit-animation-duration: 1.7s;
@@ -58,20 +79,6 @@ main {
   border-color: rgba(255, 255, 255, 0.653) rgba(255, 255, 255, 0.831) transparent;
   animation: 0.75s linear 0s infinite normal both running spinner;
   background: transparent !important;
-}
-
-#backgroundContainer {
-  background: url('../images/back.jpg') no-repeat fixed;
-
-  background-size: cover;
-  background-position: center;
-  display: grid;
-  grid-template-columns: 20rem auto;
-  grid-template-areas: 
-      "aside header"
-      "aside main";
-
-  min-height: 100vh;
 }
 
 /*  SIDE */
@@ -144,6 +151,7 @@ p, li, form {
           "header"
           "aside"
           "main"
+          "footer"
   }
 
   aside {
