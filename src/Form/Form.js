@@ -16,7 +16,7 @@ class Form extends React.Component {
                     <input type="text" id="caption" name="caption" required />
                     |  Description
                 </p>
-                <input type="file" onChange={this.props.processFile} />
+                <input type="file" title="" onChange={this.props.processFile} />
             </form >
         );
     }

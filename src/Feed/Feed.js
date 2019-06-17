@@ -10,7 +10,7 @@ class Feed extends React.Component {
                 {this.props.currentState.map(item => {
                     return <Figure
                         key={item.public_id}
-                        src={`https://res.cloudinary.com/free4m/image/upload/v${item.version}/${item.public_id}.png`}
+                        src={`https://res.cloudinary.com/free4m/image/upload/v${item.version}/${item.public_id}`}
                         alt={item.public_id}
                         description={item.description}
                     />
