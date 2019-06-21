@@ -13,6 +13,7 @@ class Feed extends React.Component {
                         src={`https://res.cloudinary.com/free4m/image/upload/v${item.version}/${item.public_id}`}
                         alt={item.public_id}
                         description={item.description}
+                        version={item.version}
                     />
                 })}
             </div>
