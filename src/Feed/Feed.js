@@ -2,7 +2,7 @@ import React from 'react';
 import Figure from '../Figure/Figure';
 import './Feed.css';
 
-// Render maps through the array of <Figure /> items and assigns key, src, alt, and description parameters;
+// Render maps through the array of <Figure /> items and assigns key, src, alt, version description parameters, and a full assets array modal slider Figure;
 class Feed extends React.Component {
     render() {
         return (
