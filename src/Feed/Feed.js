@@ -14,6 +14,7 @@ class Feed extends React.Component {
                         alt={item.public_id}
                         description={item.description}
                         version={item.version}
+                        assets={this.props.currentState}
                     />
                 })}
             </div>
