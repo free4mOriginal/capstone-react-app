@@ -10,41 +10,24 @@ class Figure extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            images: [],
             photoIndex: 0,
             isOpen: false,
         };
     }
 
-    // Populates local this.state.images array with unique src attributes for each image constructed out of the assets array from passed props, and checked against the category of images:
-    populateLocalStateImages() {
-        this.setState({
-            images: [...this.props.assets.map(item => `https://res.cloudinary.com/free4m/image/upload/v${item.version}/${item.public_id}`)],
-        });
-    }
-
-    // Instantiating the populateLocalStateImages method when all components mount
-    componentDidMount() {
-        this.populateLocalStateImages();
-    }
-
-    // Compares passed in public_id from the clicked item to the public_ids in the assets array, returns index number of matched item;
-    photoIndexSet(id) {
-        return this.props.assets.findIndex(item => item.public_id === id);
-    }
-
     render() {
-        const { images, photoIndex, isOpen } = this.state;
+        const { photoIndex, isOpen } = this.state;
+
+        // Sets images to array of img src="" strings composed of most current assets in props;
+        let images = this.props.assets.map(item => `https://res.cloudinary.com/free4m/image/upload/v${item.version}/${item.public_id}`);
 
         // onClick handler sets the state to opened modal [isOpen],
-        // and sets the photoIndex to the index of the clicked image;
+        // as the same time sets photoIndex to the findIndex that is returned with the corresponding pucblic_id item,
         // then opens the modal <div> if isOpen is true;
         return (
             <figure className={this.props.category}>
-                <img src={this.props.src} alt={this.props.alt} onClick={() => {
-                    let index = this.photoIndexSet(this.props.alt);
-                    return this.setState({ isOpen: true, photoIndex: index });
-                }} />
+                <img src={this.props.src} alt={this.props.alt} onClick={() => this.setState({ isOpen: true, photoIndex: this.props.assets.findIndex(item => item.public_id === this.props.alt) })
+                } />
                 <figcaption>{this.props.description}</figcaption>
 
                 <div>
