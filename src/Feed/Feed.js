@@ -15,6 +15,7 @@ class Feed extends React.Component {
                         description={item.description}
                         version={item.version}
                         assets={this.props.currentState}
+                        category={this.props.category}
                     />
                 })}
             </div>

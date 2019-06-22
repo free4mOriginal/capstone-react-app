@@ -14,6 +14,7 @@ class App extends Component {
     this.state = {
       assets: [],
       loading: true,
+      category: '',
     };
     this.populateState = this.populateState.bind(this);
   }
@@ -21,13 +22,12 @@ class App extends Component {
   // Dynamically populate the empty assets array with Cloundinary's live account content through API GET call, and then sort the returned array so that newest three items always show first;
   populateState(stateName) {
     Cloudinary.imageLoading(stateName).then(returnedArray => {
-      let first = [];
-      let sortedRemaining = [];
-      first.push(returnedArray.shift());
-      sortedRemaining = this.sort(returnedArray);
+      let first = returnedArray.shift();
+      let randomArray = returnedArray.sort(() => Math.random() - 0.5);
       this.setState({
-        assets: [...first, ...sortedRemaining],
+        assets: [first, ...randomArray],
         loading: false,
+        category: stateName,
       });
     });
   }
@@ -35,12 +35,6 @@ class App extends Component {
   // Initial Feed population after all other commonents have loaded;
   componentDidMount() {
     this.populateState('all');
-    // setTimeout(this.populateState('all'), 0);
-  }
-
-  // Randomly sort the incoming array;
-  sort(array) {
-    return array.sort(() => Math.random() - 0.5);
   }
 
   // Main render method that takes in rendered elements from Feed.js and other Components;
@@ -61,7 +55,7 @@ class App extends Component {
         </aside>
 
         <main>
-          {this.state.loading ? <div id="spinner"></div> : <Feed currentState={this.state.assets} />}
+          {this.state.loading ? <div id="spinner"></div> : <Feed currentState={this.state.assets} category={this.state.category} />}
         </main>
 
         <footer>

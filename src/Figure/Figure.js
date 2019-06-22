@@ -16,10 +16,10 @@ class Figure extends React.Component {
         };
     }
 
-    // Populates local this.state.images array with unique src attributes for each image constructed out of the assets array from passed props:
+    // Populates local this.state.images array with unique src attributes for each image constructed out of the assets array from passed props, and checked against the category of images:
     populateLocalStateImages() {
-        this.props.assets.forEach((item) => {
-            this.state.images.push(`https://res.cloudinary.com/free4m/image/upload/v${item.version}/${item.public_id}`)
+        this.setState({
+            images: [...this.props.assets.map(item => `https://res.cloudinary.com/free4m/image/upload/v${item.version}/${item.public_id}`)],
         });
     }
 
@@ -41,13 +41,17 @@ class Figure extends React.Component {
         // then opens the modal <div> if isOpen is true;
         return (
             <figure className={this.props.category}>
-                <img src={this.props.src} alt={this.props.alt} onClick={() => this.setState({ isOpen: true, photoIndex: this.photoIndexSet(this.props.alt) })} />
+                <img src={this.props.src} alt={this.props.alt} onClick={() => {
+                    let index = this.photoIndexSet(this.props.alt);
+                    return this.setState({ isOpen: true, photoIndex: index });
+                }} />
                 <figcaption>{this.props.description}</figcaption>
 
                 <div>
                     {isOpen && (
                         <Lightbox
                             mainSrc={images[photoIndex]}
+                            // imageCaption={<p>{this.props.description}</p>}
                             nextSrc={images[(photoIndex + 1) % images.length]}
                             prevSrc={images[(photoIndex + images.length - 1) % images.length]}
                             onCloseRequest={() => this.setState({ isOpen: false })}
@@ -58,7 +62,7 @@ class Figure extends React.Component {
                             }
                             onMoveNextRequest={() =>
                                 this.setState({
-                                    photoIndex: (photoIndex + 1) % this.state.images.length,
+                                    photoIndex: (photoIndex + 1) % images.length,
                                 })
                             }
                         />
