@@ -19,7 +19,9 @@ class Figure extends React.Component {
         const { photoIndex, isOpen } = this.state;
 
         // Sets images to array of img src="" strings composed of most current assets in props;
-        let images = this.props.assets.map(item => `https://res.cloudinary.com/free4m/image/upload/v${item.version}/${item.public_id}`);
+        const images = this.props.assets.map(item => `https://res.cloudinary.com/free4m/image/upload/v${item.version}/${item.public_id}`);
+
+        const descriptions = this.props.assets.map(item => item.description);
 
         // onClick handler sets the state to opened modal [isOpen],
         // as the same time sets photoIndex to the findIndex that is returned with the corresponding pucblic_id item,
@@ -34,7 +36,7 @@ class Figure extends React.Component {
                     {isOpen && (
                         <Lightbox
                             mainSrc={images[photoIndex]}
-                            // imageCaption={<p>{this.props.description}</p>}
+                            imageCaption={<p>{descriptions[photoIndex]}</p>}
                             nextSrc={images[(photoIndex + 1) % images.length]}
                             prevSrc={images[(photoIndex + images.length - 1) % images.length]}
                             onCloseRequest={() => this.setState({ isOpen: false })}
