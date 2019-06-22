@@ -17,3 +17,7 @@ figure {
   figcaption {
       text-overflow: ellipsis;
   }
+
+  #description {
+    align-content: center;
+  }
