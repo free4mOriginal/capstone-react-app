@@ -8,8 +8,8 @@ class Credits extends React.Component {
             <div className="credits">
                 <p><a href="#top">Back to top</a></p>
                 <span>&copy; 2024
-                <span><span className="white">Zhana Liner</span> – Design & Web Development</span>
-                <span className="smaller">Brian Patrick Tagalog, wallpaper</span>
+                <span className="white">Zhana Liner</span> – Design & Web Development</span>
+                </span>
             </div>
         );
     }
