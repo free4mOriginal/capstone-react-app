@@ -7,9 +7,7 @@ class Credits extends React.Component {
         return (
             <div className="credits">
                 <p><a href="#top">Back to top</a></p>
-                <span>&copy; 2024
-                <span className="white">Zhana Liner</span> – Design & Web Development</span>
-                </span>
+                <span>&copy; 2024 Zhana Liner</span>
             </div>
         );
     }
